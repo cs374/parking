@@ -1,0 +1,13 @@
+"term","nbr","subject","number","suffix","title","section","room","days","beg_time","end_time","instructor","acad_org","room_cap","enrolled","enrl_cap"
+1201,10540,"CS",374,NULL,"DATABASE SYSTEMS","0001","ISAT/CS Building 0246","TT","09.30","10.45","Mayfield,Christopher Scott","CS",32,32,32
+1201,10541,"CS",374,NULL,"DATABASE SYSTEMS","0002","ISAT/CS Building 0246","TT","11.00","12.15","Mayfield,Christopher Scott","CS",32,32,32
+1208,85878,"CS",374,NULL,"DATABASE SYSTEMS","0001","Online","MWF","12.00","12.50","Norton,Michael Lee","CS",999,30,30
+1208,85879,"CS",374,NULL,"DATABASE SYSTEMS","0002","ISAT/CS Building 0143","MWF","09.05","09.55","Richards,Timothy Michael","CS",30,30,30
+1211,10517,"CS",374,NULL,"DATABASE SYSTEMS","0001",NULL,"MWF","11.45","12.35","Norton,Michael Lee","CS",NULL,28,30
+1211,10518,"CS",374,NULL,"DATABASE SYSTEMS","0002",NULL,"TT","14.40","15.55","Richards,Kirsten Esther","CS",NULL,28,30
+1211,16808,"CS",374,NULL,"DATABASE SYSTEMS","0003",NULL,"TT","16.20","17.35","Richards,Kirsten Esther","CS",NULL,31,30
+1211,17034,"CS",374,NULL,"DATABASE SYSTEMS","0004",NULL,"TT","09.40","10.55","Richards,Timothy Michael","CS",NULL,12,0
+1211,17035,"CS",374,NULL,"DATABASE SYSTEMS","0005",NULL,"TT","13.00","14.15","Richards,Timothy Michael","CS",NULL,11,0
+1218,86625,"CS",374,NULL,"DATABASE SYSTEMS","0001","Engineering/Geosciences 2209","MW","15.55","17.10","Richards,Kirsten Esther","CS",34,24,25
+1218,86626,"CS",374,NULL,"DATABASE SYSTEMS","0002","Engineering/Geosciences 2209","MW","17.35","18.50","Richards,Kirsten Esther","CS",34,12,25
+1218,86628,"CS",374,NULL,"DATABASE SYSTEMS","0003","Engineering/Geosciences 2209","TT","09.40","10.55","Mayfield,Christopher Scott","CS",34,25,25
