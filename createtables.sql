@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS classes;
+DROP TABLE IF EXISTS timestamps;
 DROP TABLE IF EXISTS garage;
 
 CREATE TABLE garage (
