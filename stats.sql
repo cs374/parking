@@ -1,11 +1,8 @@
-ANALYZE VERBOSE college;
-SELECT count(*) AS col_cnt FROM college;
+ANALYZE VERBOSE garage;
+SELECT count(*) AS gar_count FROM garage;
 
-ANALYZE VERBOSE division;
-SELECT count(*) AS div_cnt FROM division;
+ANALYZE VERBOSE timestamps;
+SELECT count(*) AS time_count FROM timestamps;
 
-ANALYZE VERBOSE school;
-SELECT count(*) AS sch_cnt FROM school;
-
-ANALYZE VERBOSE enroll;
-SELECT count(*) AS enr_cnt FROM enroll;
+ANALYZE VERBOSE classes;
+SELECT count(*) AS class_count FROM classes;
