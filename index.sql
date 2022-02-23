@@ -1,1 +1,1 @@
-CREATE INDEX ON enroll (div_num, sch_num);
+CREATE INDEX ON timestamps (zone_id, time_stamp);
