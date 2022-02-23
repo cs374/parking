@@ -34,6 +34,6 @@ CREATE TABLE classes (
 	zone_id integer NOT NULL
 );
 
-ALTER TABLE timestamps OWNER TO parking;
+ALTER TABLE classes OWNER TO parking;
 
-COMMENT ON TABLE timestamps IS 'Class Meeting Times at JMU';
+COMMENT ON TABLE classes IS 'Class Meeting Times at JMU';
