@@ -22,3 +22,14 @@ CREATE TABLE timestamps (
 ALTER TABLE timestamps OWNER TO parking;
 
 COMMENT ON TABLE timestamps IS 'Timestamps for parking at JMU';
+
+CREATE TABLE classes (
+	day text NOT NULL,
+	start_time text NOT NULL,
+	end_time text NOT NULL,
+	zone_id integer NOT NULL
+);
+
+ALTER TABLE timestamps OWNER TO parking;
+
+COMMENT ON TABLE timestamps IS 'Class Meeting Times at JMU';
