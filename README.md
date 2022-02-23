@@ -2,6 +2,9 @@
 Team 4: Parking Helpers
 Members: Cate Baker, Jacquelyn Hendricks, Grace Bailey, Alex Tran
 
+IMPORTANT NOTE: Don't run certain commands multiple times without resetting everything first. For example, if you run copy.sh multiple times without 
+running createtables first to reset the tables, it will duplicate rows. 
+
 This is how to set up the project step by step:
 
 1) Clone the repository with this command:
@@ -30,7 +33,7 @@ everytime you do something with the database. Type the following commands:
 
 5) Now you will run the createtables.sql script using this command. It will create the tables that you can view in PGADMIN:
 
-```psql parking < createtables.sql```
+```psql < createtables.sql```
 
 6) The tables are now created. You can view them in pgadmin, too. However, there's no data yet, but that's what the copy script is for. 
 It imports data from the csv files into the tables.
@@ -43,4 +46,16 @@ Now, run the copy.sh file with this command:
 
 ```./copy.sh```
 
+7) Now that you have data-filled tables, let's go ahead and create the constraints:
 
+```psql < alter.sql```
+
+8) Now, we create the index for optimization:
+
+```psql < index.sql```
+
+9) Finally, run stats.sql to check that the number of rows is correct:
+
+```psql < stats.sql```
+
+-> We should get 11 rows for garage, 3168 rows for timestamps, and 737 rows for classes. 
