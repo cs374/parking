@@ -23,6 +23,8 @@ ALTER TABLE timestamps OWNER TO parking;
 
 COMMENT ON TABLE timestamps IS 'Timestamps for parking at JMU';
 
+DROP TABLE IF EXISTS classes;
+
 CREATE TABLE classes (
 	day text NOT NULL,
 	start_time text NOT NULL,
