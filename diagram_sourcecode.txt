@@ -1,0 +1,29 @@
+//// -- LEVEL 1
+//// -- Tables and References
+
+// Creating tables
+Table garage as G {
+	zone_id int [pk]
+	deck text
+	zone text
+	spaces int
+}
+
+Table occupancy as O {
+	time_stamp text [pk]
+	zone_id integer [pk]
+	occupied integer
+	visitor integer
+ }
+
+Table class as C {
+	day text [pk]
+	start_time text [pk]
+	end_time text [pk]
+	zone_id integer [pk]
+ }
+
+
+Ref: G.zone_id > C.zone_id
+
+Ref: G.zone_id - O.zone_id
