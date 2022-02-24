@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS classes;
-DROP TABLE IF EXISTS timestamps;
+DROP TABLE IF EXISTS occupancy;
 DROP TABLE IF EXISTS garage;
 
 CREATE TABLE garage (
@@ -12,18 +12,18 @@ ALTER TABLE garage OWNER TO parking;
 
 COMMENT ON TABLE garage IS 'Parking garages at JMU';
 
-DROP TABLE IF EXISTS timestamps;
+DROP TABLE IF EXISTS occupancy;
 
-CREATE TABLE timestamps (
+CREATE TABLE occupancy (
 	time_stamp text NOT NULL,
 	zone_id integer NOT NULL,
 	occupied integer NOT NULL,
 	visitor integer NOT NULL
 );
 
-ALTER TABLE timestamps OWNER TO parking;
+ALTER TABLE occupancy OWNER TO parking;
 
-COMMENT ON TABLE timestamps IS 'Timestamps for parking at JMU';
+COMMENT ON TABLE occupancy IS 'occupancy for parking at JMU';
 
 DROP TABLE IF EXISTS classes;
 

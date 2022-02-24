@@ -1,1 +1,1 @@
-CREATE INDEX ON timestamps (zone_id, time_stamp);
+CREATE INDEX ON occupancy (zone_id, time_stamp);
