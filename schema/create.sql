@@ -13,8 +13,8 @@ ALTER TABLE garage OWNER TO parking;
 COMMENT ON TABLE garage IS 'Parking garages at JMU';
 
 CREATE TABLE occupancy (
-	zone_id integer NOT NULL,
 	time_stamp text NOT NULL,
+	zone_id integer NOT NULL,
 	occupied integer NOT NULL,
 	visitor integer NOT NULL
 );
