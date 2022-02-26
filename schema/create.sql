@@ -12,8 +12,6 @@ ALTER TABLE garage OWNER TO parking;
 
 COMMENT ON TABLE garage IS 'Parking garages at JMU';
 
-DROP TABLE IF EXISTS occupancy;
-
 CREATE TABLE occupancy (
 	time_stamp text NOT NULL,
 	zone_id integer NOT NULL,
@@ -24,8 +22,6 @@ CREATE TABLE occupancy (
 ALTER TABLE occupancy OWNER TO parking;
 
 COMMENT ON TABLE occupancy IS 'occupancy for parking at JMU';
-
-DROP TABLE IF EXISTS classes;
 
 CREATE TABLE classes (
 	day text NOT NULL,
