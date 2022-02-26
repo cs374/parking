@@ -27,7 +27,8 @@ CREATE TABLE classes (
 	day text NOT NULL,
 	start_time text NOT NULL,
 	end_time text NOT NULL,
-	zone_id integer NOT NULL
+	zone_id integer NOT NULL,
+    term text NOT NULL
 );
 
 ALTER TABLE classes OWNER TO parking;
