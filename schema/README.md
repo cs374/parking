@@ -21,6 +21,8 @@ You should see everything in your directory. If the first step went right, you s
 
 ```cd parking```
 
+```cd schema```
+
 -> Cool! Now you're in our repository! You should see all of our files there when you type ```l```
 
 4) Ok, *I think* you will now have to set the environment variables, so that you don't have to type you psql password
