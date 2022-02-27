@@ -25,7 +25,6 @@ Table class as C {
  }
 
 
-Ref: G.zone_id > C.zone_id
+Ref: G.zone_id < C.zone_id
 
-Ref: G.zone_id - O.zone_id
-
+Ref: G.zone_id < O.zone_id
