@@ -11,7 +11,6 @@ ALTER TABLE occupancy ADD FOREIGN KEY (zone_id) REFERENCES garage;
 ALTER TABLE class ADD PRIMARY KEY (zone_id, start_time, end_time, day);
 
 /* set foreign key for class table as zone_id*/
-
 ALTER TABLE class ADD FOREIGN KEY (zone_id) REFERENCES garage;
 
 
