@@ -10,8 +10,8 @@ Table garage as G {
 }
 
 Table occupancy as O {
+	time_stamp text [pk]
 	zone_id integer [pk]
-	time_stamp text
 	occupied integer
 	visitor integer
  }
@@ -20,7 +20,8 @@ Table class as C {
 	day text [pk]
 	start_time text [pk]
 	end_time text [pk]
-	zone_id integer
+	zone_id int [pk]
+	term text
  }
 
 
