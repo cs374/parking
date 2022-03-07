@@ -61,3 +61,14 @@ Now, run the copy.sh file with this command:
 ```psql < stats.sql```
 
 -> We should get 11 rows for garage, 3168 rows for timestamps, and 737 rows for classes. 
+
+----------------------------------------------
+This part is for GP3!
+
+1) Type these commands to exit parking to get into the queries directory
+
+```cd -```
+```cd queries```
+
+2) Run the queries script
+```psql < which_garage.sql```
