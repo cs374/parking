@@ -23,7 +23,7 @@ CREATE TABLE occupancy (
 
 ALTER TABLE occupancy OWNER TO parking;
 
-COMMENT ON TABLE occupancy IS 'occupancy for parking at JMU';
+COMMENT ON TABLE occupancy IS 'Occupancy for parking at JMU';
 
 
 DROP TABLE IF EXISTS class;
@@ -41,4 +41,21 @@ ALTER TABLE class OWNER TO parking;
 COMMENT ON TABLE class IS 'Class Meeting Times at JMU';
 
 
+DROP TABLE IF EXISTS enrollment;
 
+CREATE TABLE enrollment (
+	term integer NOT NULL,
+	nbr integer NOT NULL,
+	subject text NOT NULL,
+	number integer NOT NULL,
+	title text NOT NULL,
+	section text NOT NULL,
+	days text NOT NULL,
+	beg_time text,
+	end_time text,
+	enrolled integer NOT NULL
+);
+
+ALTER TABLE enrollment OWNER TO parking;
+
+COMMENT ON TABLE enrollment IS 'Enrollment data at JMU';
