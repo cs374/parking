@@ -15,6 +15,6 @@ RETURNS TABLE(time text, occ_spaces integer) AS $$
 
 $$ LANGUAGE SQL STABLE STRICT;
 
-ALTER FUNCTION garage_daily_stats(g_zone integer, day timestamp) OWNER TO parking;
+ALTER FUNCTION garage_daily_stats(g_zone integer, day text) OWNER TO parking;
 
 
