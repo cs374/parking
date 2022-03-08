@@ -5,7 +5,7 @@
 DROP FUNCTION IF EXISTS garage_daily_stats(g_zone integer, day text);
 
 CREATE FUNCTION garage_daily_stats(g_zone integer, day text)
-RETURNS TABLE(g_name text, occ_spaces integer) AS $$
+RETURNS TABLE(time text, occ_spaces integer) AS $$
 
   SELECT time_stamp, occupied
   FROM garage
