@@ -11,7 +11,7 @@ RETURNS TABLE(time_stamp text, occ_spaces integer) AS $$
   FROM garage
     JOIN occupancy AS o ON garage.zone_id = o.zone_id
   WHERE garage.zone_id = $1
-    AND o.time_stamp LIKE '%' + $2 + '%'
+    AND o.time_stamp LIKE CONCAT('%', $2, '%')
 $$ LANGUAGE SQL STABLE STRICT;
 
 ALTER FUNCTION garage_daily_stats(g_zone integer, day text) OWNER TO parking;
