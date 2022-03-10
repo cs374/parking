@@ -1,25 +1,27 @@
 --
--- Determines how many estimated students and courses were on campus at a given term, day, and time.
--- Note, if looking at a range in the future, this doesn't consider that one student 
--- may be in sequential courses at one time.
+-- Determines how many estimated students and courses were on campus at a given term and day.
+-- Note: this doesn't consider that one student may be in sequential courses at one time.
 --
 -- day and start_time won't be text once we figure out the timestamp issues
 --
 
-DROP FUNCTION IF EXISTS how_many_stucour(term integer, day text, start_time text);
+DROP FUNCTION IF EXISTS how_many_stucour(term integer, day text);
 
-CREATE FUNCTION how_many_stucour(term integer, day text, start_time text)
-RETURNS TABLE(days text, num_students bigint, num_courses bigint) AS $$
+CREATE FUNCTION how_many_stucour(term integer, day text)
+RETURNS TABLE(beg_time text, num_students bigint, num_courses bigint) AS $$
 
-    SELECT days, sum(enrolled) AS num_students, count(*) AS num_courses
+    SELECT beg_time, sum(enrolled) AS num_students, count(*) AS num_courses
     FROM enrollment
     WHERE days LIKE CONCAT('%', $2, '%')
-	AND term = $1
-	AND beg_time LIKE CONCAT('%', $3, '%')
-    GROUP BY days
+        AND term = $1
+    GROUP BY beg_time
+    HAVING sum(enrolled) > 50 --eliminates times with less than 100 people 
+        AND count(*) > 5 --elimates times with less than 5 courses
+    ORDER BY beg_time;
+
 $$ LANGUAGE SQL STABLE STRICT;
 
-ALTER FUNCTION how_many_stucour(term integer, day text, start_time text)OWNER TO parking;
+ALTER FUNCTION how_many_stucour(term integer, day text)OWNER TO parking;
 
 
 
