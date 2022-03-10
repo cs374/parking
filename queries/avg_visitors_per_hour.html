@@ -1,0 +1,112 @@
+<html>
+<head>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+	<h1>Query</h1>
+	
+	<pre> 
+	SELECT hour, avg_visitors
+	FROM avg_visitors_per_hour('Grace')
+	ORDER BY hour;
+	</pre>
+	
+	<h1>Table</h1>
+	
+	<div id="table_div" style="width: 500px;"></div>
+	
+	<script type="text/javascript">
+		google.charts.load('current', { 'packages': ['table'] });
+		google.charts.setOnLoadCallback(drawTable);
+		
+		function drawTable() {
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Hour');
+			data.addColumn('number', 'Average Visitors');
+			data.addRows([
+				['0', 0.042136097],
+				['1', 0.028603604],
+				['2', 0.02196558],
+				['3', 0.013976555],
+				['4', 0.043458371],
+				['5', 0.467327625],
+				['6', 0.884025271],
+				['7', 6.262173129],
+				['8', 2.24009009],
+				['9', 3.232247852],
+				['10', 3.155996393],
+				['11', 3.791572781],
+				['12', 4.115680072],
+				['13', 3.428442438],
+				['14', 3.722497746],
+				['15', 3.199142986],
+				['16', 2.583107498],
+				['17', 2.973719982],
+				['18', 2.3794744],
+				['19', 1.917271079],
+				['20', 0.909379248],
+				['21', 0.445627549],
+				['22', 0.19701087],
+				['23', 0.113605442]
+
+			]);
+			
+			var table = new google.visualization.Table(document.getElementById('table_div'));
+			table.draw(data, { showRowNumber: true, width: '100%', height: '100%' });
+		}
+	</script>
+	
+
+	<h1>Chart</h1>
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+	  
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+				['Average Visitors', 'Hours'],
+				['0', 0.042136097],
+				['1', 0.028603604],
+				['2', 0.02196558],
+				['3', 0.013976555],
+				['4', 0.043458371],
+				['5', 0.467327625],
+				['6', 0.884025271],
+				['7', 6.262173129],
+				['8', 2.24009009],
+				['9', 3.232247852],
+				['10', 3.155996393],
+				['11', 3.791572781],
+				['12', 4.115680072],
+				['13', 3.428442438],
+				['14', 3.722497746],
+				['15', 3.199142986],
+				['16', 2.583107498],
+				['17', 2.973719982],
+				['18', 2.3794744],
+				['19', 1.917271079],
+				['20', 0.909379248],
+				['21', 0.445627549],
+				['22', 0.19701087],
+				['23', 0.113605442]
+			  ]);
+	  
+			var options = {
+			title: 'Average Visitors Per Hour - Grace Deck',
+			curveType: 'function',
+			legend: { position: 'bottom' }
+   			};
+	  
+			var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+	  
+			chart.draw(data, options);
+		}
+	</script>
+	<body>
+		<div id="curve_chart" style="width: 1000px; height: 500px"></div>
+	</body>
+	</html>
+
