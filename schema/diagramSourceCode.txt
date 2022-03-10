@@ -1,0 +1,47 @@
+//// -- LEVEL 1
+//// -- Tables and References
+
+// Creating tables
+Table garage as G {
+	zone_id integer [pk]
+	deck text
+	zone text
+	spaces integer
+}
+
+Table occupancy as O {
+	time_stamp text [pk]
+	zone_id integer [pk] 
+	occupied integer
+	visitor integer
+ }
+
+Table classes as C {
+	day text [pk]
+	start_time text [pk]
+	end_time text [pk]
+	zone_id integer [pk]
+	term text
+ }
+
+Table enrollment as E {
+  term integer 
+  nbr integer [pk]
+  subject text
+  number integer
+  title text 
+  section text 
+  days text
+  beg_time text [pk]
+  end_time text [pk]
+  enrolled integer
+}
+
+Ref: G.zone_id < C.zone_id
+
+Ref: G.zone_id < O.zone_id
+
+Ref: E.beg_time < C.start_time
+
+Ref: E.end_time < C.end_time
+
