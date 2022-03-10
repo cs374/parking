@@ -7,9 +7,8 @@
 	<h1>Query</h1>
 	
 	<pre> 
-		SELECT garage_name, zone_name, spaces
-		FROM which_garage(500)
-		ORDER BY garage_name, zone_name, spaces
+		SELECT *
+		FROM class_time_garage_avail('10.15')
 	</pre>
 	
 	<h1>Table</h1>
@@ -22,13 +21,17 @@
 		
 		function drawTable() {
 			var data = new google.visualization.DataTable();
-			data.addColumn('string', 'Garage and Zone');
-			data.addColumn('number', 'Spaces total');
+			data.addColumn('string', 'Parking Deck');
+			data.addColumn('number', 'Available Spaces');
 			data.addRows([
-				["Ballard/Commuter",1467],
-				["Chesapeake/Commuter",635],
-				["Mason/Faculty/Staff",566],
-				["Warsaw/Commuter",542]
+
+				["Grace",160],
+				["Mason",202],
+				["Warsaw",295],
+				["Champions",370],
+				["Chesapeake",554],
+				["Ballard",717]
+
 			]);
 			
 			var table = new google.visualization.Table(document.getElementById('table_div'));
@@ -46,15 +49,17 @@
 		
 		function drawChart() {
 			var data = google.visualization.arrayToDataTable([
-				['deck/zone', 'spaces'],
-				["Ballard/Commuter",1467],
-				["Chesapeake/Commuter",635],
-				["Mason/Faculty/Staff",566],
-				["Warsaw/Commuter",542]
+				["Parking Deck", "Available Spaces"],
+				["Grace",160],
+				["Mason",202],
+				["Warsaw",295],
+				["Champions",370],
+				["Chesapeake",554],
+				["Ballard",717]
 			]);
 			
 			var options = {
-                title: 'Garages that have over 500 spaces total',
+                title: 'Garage availability in spaces at 10:15 AM on an average (literally) day',
                 curveType: 'function',
                 legend: { position: 'bottom' }
             };
