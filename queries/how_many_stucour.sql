@@ -15,7 +15,7 @@ RETURNS TABLE(beg_time text, num_students bigint, num_courses bigint) AS $$
     WHERE days LIKE CONCAT('%', $2, '%')
         AND term = $1
     GROUP BY beg_time
-    HAVING sum(enrolled) > 50 --eliminates times with less than 100 people 
+    HAVING sum(enrolled) > 50 --eliminates times with less than 50 people 
         AND count(*) > 5 --elimates times with less than 5 courses
     ORDER BY beg_time;
 
