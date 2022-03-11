@@ -5,14 +5,11 @@ CREATE FUNCTION avg_visitors_per_hour(g_name text)
 RETURNS TABLE(deck text, hour text, avg_visitors numeric) AS $$
 
 
-SELECT DISTINCT deck, SUBSTRING(o.time_stamp,12,2), AVG(o.visitor)
+SELECT DISTINCT deck, SUBSTRING(o.time_stamp,12,2), 
+	   SUM(o.visitor)/COUNT(DISTINCT SUBSTRING(o.time_stamp,0,11)) AS avg_vistiors
 FROM garage AS g
 	JOIN occupancy AS o ON g.zone_id = o.zone_id
 WHERE g.deck = $1
-	AND NOT SUBSTRING(o.time_stamp,6,2) = '05'
-	AND NOT SUBSTRING(o.time_stamp,6,2) = '06'
-	AND NOT SUBSTRING(o.time_stamp,6,2) = '07'
-	AND NOT SUBSTRING(o.time_stamp,6,2) = '08'
 GROUP BY deck, SUBSTRING(o.time_stamp,12,2)
 ORDER BY SUBSTRING(o.time_stamp,12, 2)
 	
