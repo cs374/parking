@@ -1,3 +1,5 @@
+--This will show you the number of parking spots available at 
+--each garage at a given time (which is the parameter). 
 DROP FUNCTION IF EXISTS class_time_garage_avail(start_time text);
 
 CREATE FUNCTION class_time_garage_avail(start_time text) 
