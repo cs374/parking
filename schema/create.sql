@@ -15,7 +15,7 @@ COMMENT ON TABLE garage IS 'Parking garages at JMU';
 DROP TABLE IF EXISTS occupancy;
 
 CREATE TABLE occupancy (
-	time_stamp text NOT NULL,
+	time_stamp timestamp NOT NULL,
 	zone_id integer NOT NULL,
 	occupied integer NOT NULL,
 	visitor integer NOT NULL
@@ -30,8 +30,8 @@ DROP TABLE IF EXISTS class;
 
 CREATE TABLE class (
 	day text NOT NULL,
-	start_time text NOT NULL,
-	end_time text NOT NULL,
+	start_time time NOT NULL,
+	end_time time NOT NULL,
 	zone_id integer NOT NULL,
 	term text NOT NULL
 );
@@ -51,8 +51,8 @@ CREATE TABLE enrollment (
 	title text NOT NULL,
 	section text NOT NULL,
 	days text NOT NULL,
-	beg_time text,
-	end_time text,
+	beg_time time,
+	end_time time,
 	enrolled integer NOT NULL
 );
 
