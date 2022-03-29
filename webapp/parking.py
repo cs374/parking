@@ -3,7 +3,7 @@ import psycopg, re
 
 app = Flask(__name__)
 app.secret_key = "my_key"
-
+ 
 query = """
 SELECT * FROM class_time_garage_avail(%s)
 """
