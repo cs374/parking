@@ -43,6 +43,7 @@
 
     <div id="chart_div" style="width: 1000px; height: 500px"></div>
 
+    {%if cur%}
     <script>
         google.charts.load('current', { 'packages': ['corechart', 'bar'] });
         google.charts.setOnLoadCallback(drawStuff);
@@ -62,7 +63,7 @@
         var materialOptions = {
             width: 900,
             chart: {
-                title: 'Student numbers and Course Offerings on Mondays in Fall 2021',
+                title: 'Student numbers and Course Offerings on {{ day }} in {{ term }}',
                 subtitle: 'Note: a student in one time could be a student in another time.'
             },
             series: {
@@ -107,6 +108,7 @@
         drawMaterialChart();
         };
     </script>
+    {%endif%}
 </body>
 
 </html>
