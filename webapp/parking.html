@@ -2,9 +2,9 @@
 <html>
 <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    {# The next 4 lines basically gets the data from the py file so that our javascript code can use it #}
     <script type="text/javascript">
         myvar = {{data|tojson}}
-        console.log(myvar)
     </script>
     
     <title>Parking!</title>
@@ -12,7 +12,7 @@
 <body>
     <h2>class_time_garage_avail query</h2>
     {% if is_input_wrong %}
-        WRONG INPUT FORMAT. USE THE HH:MM PLEEEEEEASE :(
+        WRONG INPUT FORMAT. PLEASE USE THE 'HH:MM' FORMAT. 
     {% endif %}
     <form>
         <p>
@@ -49,6 +49,7 @@
         google.charts.setOnLoadCallback(drawChart);
 		
 		function drawChart() {
+            /* This next line inserts headers for the table */
             myvar.splice(0, 0, ["Garage", "Available spaces"])
 			var data = google.visualization.arrayToDataTable(myvar);
 			
