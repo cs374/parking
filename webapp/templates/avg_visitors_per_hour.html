@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    {# The next 4 lines basically gets the data from the py file so that our javascript code can use it #}
+    <script type="text/javascript">
+        myvar = {{data|tojson}}
+    </script>
+    
+    <title>Parking!</title>
+</head>
+<body>
+    <h2>avg_visitors_per_hour query</h2>
+
+    <form>
+        <p>
+            Enter a Garage: 
+			<br>
+			<input type="radio" id="Grace" name="garage" value="Grace">
+			<label for="Grace">Grace</label><br>
+			<input type="radio" id="Warsaw" name="garage" value="Warsaw">
+			<label for="Warsaw">Warsaw</label><br>
+			<input type="radio" id="Ballard" name="garage" value="Ballard">
+			<label for="Ballard">Ballard</label><br>
+			<input type="radio" id="Champions" name="garage" value="Champions">
+			<label for="Champions">Champions</label><br>
+			<input type="radio" id="Chesapeake" name="garage" value="Chesapeake">
+			<label for="Chesapeake">Chesapeake</label><br>
+			<input type="radio" id="Mason" name="garage" value="Mason">
+			<label for="Mason">Mason</label><br>
+            <input type="submit">
+        </p>
+    </form>
+
+    <div id="table_div" style="width: 500px;"></div>
+	
+	<script type="text/javascript">
+		google.charts.load('current', { 'packages': ['table'] });
+		google.charts.setOnLoadCallback(drawTable);
+
+		function drawTable() {
+			var jsdata = new google.visualization.DataTable();
+			jsdata.addColumn('number', 'Hour');
+			jsdata.addColumn('number', 'Average Visitors');
+			
+            jsdata.addRows(myvar);
+			
+			var table = new google.visualization.Table(document.getElementById('table_div'));
+			table.draw(jsdata, { showRowNumber: true, width: '100%', height: '100%' });
+		}
+
+	</script>
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+	  
+		function drawChart() {
+			myvar.splice(0, 0, ["Garage", "Average spaces occupied"])
+			var data = google.visualization.arrayToDataTable(myvar);
+	  
+			var options = {
+			title: 'Average Visitors Per Hour - {{ garage }}',
+			curveType: 'function',
+			legend: { position: 'bottom' }
+   			};
+	  
+			var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+	  
+			chart.draw(data, options);
+		}
+	</script>
+	<body>
+		<div id="curve_chart" style="width: 1000px; height: 500px"></div>
+	</body>
+	</html>
+
+</body>
+</html>
