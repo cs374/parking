@@ -31,8 +31,8 @@ def select_class_time():
         else :
             data=None
             is_input_wrong = 1
-            return render_template("parking.html", data=data, time_input=time_input, is_input_wrong=is_input_wrong)
+            return render_template("class_time_garage_avail.html", data=data, time_input=time_input, is_input_wrong=is_input_wrong)
     #There's no input, so nothing happens!
     else:
         data = None
-    return render_template("parking.html", data=data, time_input=time_input, is_input_wrong=is_input_wrong)
+    return render_template("class_time_garage_avail.html", data=data, time_input=time_input, is_input_wrong=is_input_wrong)
