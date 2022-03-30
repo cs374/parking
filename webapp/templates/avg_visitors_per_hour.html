@@ -57,11 +57,11 @@
 		google.charts.setOnLoadCallback(drawChart);
 	  
 		function drawChart() {
-			myvar.splice(0, 0, ["Garage", "Average spaces occupied"])
+			myvar.splice(0, 0, ["Garage", "Average Spaces Occupied"])
 			var data = google.visualization.arrayToDataTable(myvar);
 	  
 			var options = {
-			title: 'Average Visitors Per Hour - {{ garage }}',
+			title: 'Average Visitors Per Hour',
 			curveType: 'function',
 			legend: { position: 'bottom' }
    			};
