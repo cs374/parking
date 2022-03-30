@@ -6,39 +6,30 @@
 </head>
 
 <body>
-    <h1>Query</h1>
+    <h1>Get Garage Availability</h1>
 
-    <pre>
-        SELECT time_stamp, occ_spaces
-        FROM garage_daily_stats(4, '2021-09-29')
-        ORDER BY time_stamp;
-    </pre>
+    {% if cur1 %}
+    <form>
+        <p>Select a Term:</p>
+        {% for garage in cur1 %}
+        <input type="radio" id="Z{{ garage[0] }}" name="garage" value="{{ garage[0] }}">
+        <label for="Z{{ garage[0] }}">{{ garage[1] }}: {{ garage[2] }}</label><br>
+        {% endfor %}
 
-    <h1>Table</h1>
+        <p>Select a Day:</p>
+        <input type="date" name="date">
+        </div>
 
-    <div id="table_div" style="width: 500px;"></div>
+        <p><input type="submit"></p>
+    </form>
+    {% endif %}
 
-    <script type="text/javascript">
-        google.charts.load('current', { 'packages': ['table'] });
-        google.charts.setOnLoadCallback(drawTable);
+    {% for message in get_flashed_messages() %}
+    <p style="color:red">{{ message }}</p>
+    {% endfor %}
 
-        function drawTable() {
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Time');
-            data.addColumn('number', 'Spaces');
-            data.addRows([
-                {# change me #}
-            ]);
-
-            var table = new google.visualization.Table(document.getElementById('table_div'));
-
-            table.draw(data, { showRowNumber: true, width: '100%', height: '100%' });
-        }
-    </script>
-
-    <h1>Chart</h1>
+    {% if cur2 %}
     <div id="curve_chart" style="width: 900px; height: 500px"></div>
-
     <script>
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
@@ -46,20 +37,23 @@
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Time', 'Occupancy'],
-                {# change me #}
+                {% for row in cur2 %}
+        ["{{ row[0] }}", {{ row[1]}}],
+            {% endfor %}
             ]);
 
-            var options = {
-                title: 'Grace: Zone 4',
-                curveType: 'function',
-                legend: { position: 'bottom' }
-            };
+        var options = {
+            title: '{{ garage }}',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+        };
 
-            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
-            chart.draw(data, options);
+        chart.draw(data, options);
         }
     </script>
+    {% endif %}
 </body>
 
 </html>

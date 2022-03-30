@@ -1,22 +1,40 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 import psycopg
 
 app = Flask(__name__)
+app.secret_key = 'garage_day_stats'
 
 
-@app.route("/")
-def index():
-    term = request.args.get("term", "")
-    day = request.args.get("day", "")
-    if term and day:
-        con = psycopg.connect(
-            "host=localhost dbname=parking user=hendrijn password=112259998")
-        cur = con.cursor()
+@app.route("/") #this should be in main
+def garage_day_stats():
+    #make two cursors
+    garage = request.args.get("garage", "")
+    date = request.args.get("date", "")
+    con = psycopg.connect("host=localhost dbname=parking user=hendrijn password=112259998")
+    cur1 = con.cursor()
+ 
+    #used for the form
+    cur1.execute("SELECT * FROM garage")
+    
+    if garage and date:
+        cur2 = con.cursor()
         sql = """
-            SELECT *
-            FROM how_many_stucour(%s, %s);"""
-        cur.execute(sql, (term, day))
-        strTerm, strDay = processStrings(term, day)
-        return render_template("garage_day_stats.html", cur=cur)
+        SELECT time_stamp::time, occ_spaces
+        FROM garage_daily_stats(%s, %s)
+        ORDER BY time_stamp;"""
+        try:
+            cur2.execute(sql, (garage, date))
+        except Exception as error:
+            flash(f'Error in selections.')
+            cur2 = None
+            
+        #if the results are empty
+        row = cur2.fetchone()
+        if row == None:
+            flash(f'No valid matches.')
+            cur2 = None
     else:
-        return render_template("garage_day_stats.html")
+        cur2 = None
+    
+    return render_template("garage_day_stats.html", garage=garage, date=date, cur1=cur1, cur2=cur2) #pass both cursors to the template
+

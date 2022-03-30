@@ -11,11 +11,21 @@
             display: flex;
             flex-direction: row;
         }
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        #sub {
+            margin: 10px 0;
+            font-style: italic;
+        }
     </style>
 </head>
 
 <body>
     <h1>Finding Student Enrollment</h1>
+    <p id="sub">Results only show class times with more than 50 people and more than 5 courses.</p>
 
     <form>
         <p>Select a Term:</p>
@@ -24,26 +34,33 @@
         <input type="radio" id="1218" name="term" value="1218">
         <label for="1218">Fall 2021</label><br>
 
+        <br>
+
         <p>Select a Day/Days:</p>
         <div id="days">
-            <input type="checkbox" id="M" name="day" value="M">
+            <input type="checkbox" name="M" id="M">
             <label for="M">Monday</label><br>
-            <input type="checkbox" id="TU" name="day" value="TU">
+            <input type="checkbox" name="TU" id="TU">
             <label for="TU">Tuesday</label><br>
-            <input type="checkbox" id="W" name="day" value="W">
+            <input type="checkbox" name="W" id="W">
             <label for="W">Wednesday</label><br>
-            <input type="checkbox" id="TH" name="day" value="Th">
+            <input type="checkbox" name="TH" id="Th">
             <label for="Th">Thursday</label><br>
-            <input type="checkbox" id="F" name="day" value="F">
+            <input type="checkbox" name="F" id="F">
             <label for="F">Friday</label><br>
         </div>
+
+        <br>
 
         <p><input type="submit"></p>
     </form>
 
-    <div id="chart_div" style="width: 1000px; height: 500px"></div>
+    {% for message in get_flashed_messages() %}
+    <p style="color:red">{{ message }}</p>
+    {% endfor %}
 
     {%if cur%}
+    <div id="chart_div" style="width: 1000px; height: 500px"></div>
     <script>
         google.charts.load('current', { 'packages': ['corechart', 'bar'] });
         google.charts.setOnLoadCallback(drawStuff);
