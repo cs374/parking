@@ -3,7 +3,7 @@ import psycopg, re
 
 query = """
 SELECT deck, occupied_spaces, available_spaces
-	FROM percentage_occupied(%s, %s, %s);
+	FROM faculty(%s, %s, %s);
 """
 
 def return_database():
