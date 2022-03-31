@@ -44,8 +44,8 @@
             <label for="TU">Tuesday</label><br>
             <input type="checkbox" name="W" id="W">
             <label for="W">Wednesday</label><br>
-            <input type="checkbox" name="TH" id="Th">
-            <label for="Th">Thursday</label><br>
+            <input type="checkbox" name="TH" id="TH">
+            <label for="TH">Thursday</label><br>
             <input type="checkbox" name="F" id="F">
             <label for="F">Friday</label><br>
         </div>
@@ -58,6 +58,16 @@
     {% for message in get_flashed_messages() %}
     <p style="color:red">{{ message }}</p>
     {% endfor %}
+
+    <!-- Saves which button was selected after submitting -->
+    <script>
+        document.getElementById("{{term}}").checked = true;
+        // document.getElementById("M").checked = true;
+        // document.getElementById("TU").checked = true;
+        // document.getElementById("W").checked = true;
+        // document.getElementById("TH").checked = true;
+        // document.getElementById("F").checked = true;
+    </script>
 
     {%if cur%}
     <div id="chart_div" style="width: 1000px; height: 500px"></div>
@@ -80,7 +90,7 @@
         var materialOptions = {
             width: 900,
             chart: {
-                title: 'Student numbers and Course Offerings on {{ day }} in {{ term }}',
+                title: 'Student numbers and Course Offerings on {{ day }} in {{ strTerm }}',
                 subtitle: 'Note: a student in one time could be a student in another time.'
             },
             series: {

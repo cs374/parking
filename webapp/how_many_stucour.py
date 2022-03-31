@@ -3,19 +3,21 @@ import psycopg, app
 
 def index():
     term = request.args.get("term", "")
+
     monday = request.args.get("M", "")
     tuesday = request.args.get("TU", "")
     wednesday = request.args.get("W", "")
     thursday = request.args.get("TH", "")
     friday = request.args.get("F", "")
 
+    #turns separate variables into one string for sql
     day = getDays(monday, tuesday, wednesday, thursday, friday)
 
     if term and day:
         con = app.return_database()
         cur = con.cursor()
         sql = """
-            SELECT *
+            SELECT to_char(beg_time, 'HH24:MI'), num_students, num_courses
             FROM how_many_stucour(%s, %s);"""
         cur.execute(sql, (term, day))
         try:
@@ -27,14 +29,13 @@ def index():
                 flash(f'No significant matches.')
                 cur = None
 
+            #turns numerical term into readable term
             strTerm = processStrings(term)
         except Exception as error:
             flash(f'Error in selections.')
             cur = None
 
-
-        
-        return render_template("how_many_stucour.html", term=strTerm, day=day, cur=cur)
+        return render_template("how_many_stucour.html", term=term, strTerm=strTerm, day=day, cur=cur)
     else:
         return render_template("how_many_stucour.html")
     
@@ -70,27 +71,5 @@ def processStrings(term):
         strTerm = 'Spring 2021'
     else:
         strTerm = 'Fall 2021'
-
-    # if 'M' in day:
-    #     strDay += 'Monday '
-    # if 'TU' in day:
-    #     strDay += 'Tuesday '
-    # if 'W' in day:
-    #     strDay += 'Wednesday '
-    # if 'TH' in day:
-    #     strDay += 'Thursday '
-    # if 'F' in day:
-    #     strDay += 'Friday'
-    
-    # if 'TW' in day or 'MT' in day:
-
-
-    # #handle TT case
-    # if 'TT' == day:
-    #     strDay = 'Tuesday and Thursday'
-
-    # #handle M-F case
-    # if day == 'M-F':
-    #     strDay = 'Monday Tuesday Wednesday Thursday Friday'
 
     return strTerm

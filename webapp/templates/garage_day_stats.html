@@ -7,6 +7,7 @@
 
 <body>
     <h1>Get Garage Availability</h1>
+    <a href="/">Home Page</a>
 
     {% if cur1 %}
     <form>
@@ -17,12 +18,17 @@
         {% endfor %}
 
         <p>Select a Day:</p>
-        <input type="date" name="date">
+        <input type="date" name="date" value="{{ date }}">
         </div>
 
         <p><input type="submit"></p>
     </form>
     {% endif %}
+
+    <!-- Saves which button was selected after submitting -->
+    <script>
+        document.getElementById("Z{{ garage }}").checked = true;
+    </script>
 
     {% for message in get_flashed_messages() %}
     <p style="color:red">{{ message }}</p>
@@ -43,9 +49,12 @@
             ]);
 
         var options = {
-            title: '{{ garage }}',
+            title: '{{ strGarage }} Occupancy for {{ date }}',
             curveType: 'function',
-            legend: { position: 'bottom' }
+            legend: { position: 'bottom' },
+            vAxis: {
+                title: "Parking Spaces"
+            }
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
