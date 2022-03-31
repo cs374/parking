@@ -4,6 +4,7 @@ import class_time_garage_avail
 import garage_day_stats
 import how_many_stucour
 import percentage_occupied
+import faculty
 
 app = Flask(__name__)
 app.secret_key = "key"
@@ -31,3 +32,7 @@ def students():
 @app.route("/occupied")
 def occupied():
     return percentage_occupied.select_hour_date()
+
+@app.route("/faculty")
+def facultySpots():
+    return faculty.availableSpots()
