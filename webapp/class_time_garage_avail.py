@@ -1,9 +1,6 @@
 #8:40 pm
 from flask import Flask, render_template, request, flash, redirect
 import psycopg, re
-
-app = Flask(__name__)
-app.secret_key = "my_key"
  
 query = """
 SELECT * FROM class_time_garage_avail(%s)
@@ -12,7 +9,6 @@ SELECT * FROM class_time_garage_avail(%s)
 def return_database():
     return psycopg.connect("host=localhost dbname=parking user=tranaa password=112099828")
 
-@app.route('/')
 def select_class_time():
     #This variable checks if the input is the right format. If it's not the right format,
     #it will be changed to 1. 

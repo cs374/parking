@@ -1,10 +1,6 @@
 from flask import Flask, render_template, request, flash
 import psycopg
 
-app = Flask(__name__)
-app.secret_key = 'how_many_stucour'
-
-@app.route("/")
 def index():
     term = request.args.get("term", "")
     monday = request.args.get("M", "")

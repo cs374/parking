@@ -1,11 +1,6 @@
 from flask import Flask, render_template, request, flash
 import psycopg
 
-app = Flask(__name__)
-app.secret_key = 'garage_day_stats'
-
-
-@app.route("/") #this should be in main
 def garage_day_stats():
     #make two cursors
     garage = request.args.get("garage", "")
