@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request, flash
-import psycopg
+import psycopg, app
 
 def garage_day_stats():
     #make two cursors
     garage = request.args.get("garage", "")
     date = request.args.get("date", "")
-    con = psycopg.connect("host=localhost dbname=parking user=hendrijn password=112259998")
+    con = app.return_database()
     cur1 = con.cursor()
  
     #used for the form

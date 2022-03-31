@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, flash
-import psycopg
+import psycopg, app
 
 def index():
     term = request.args.get("term", "")
@@ -12,8 +12,7 @@ def index():
     day = getDays(monday, tuesday, wednesday, thursday, friday)
 
     if term and day:
-        con = psycopg.connect(
-            "host=localhost dbname=parking user=hendrijn password=112259998")
+        con = app.return_database()
         cur = con.cursor()
         sql = """
             SELECT *

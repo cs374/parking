@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import psycopg
 import avg_visitors_per_hour
 import class_time_garage_avail
 import garage_day_stats
@@ -8,6 +9,9 @@ import faculty
 
 app = Flask(__name__)
 app.secret_key = "key"
+
+def return_database():
+    return psycopg.connect("host=localhost dbname=parking user=parking password=JUvWSJ2hgRp93TmU")
 
 @app.route("/")
 def index():
