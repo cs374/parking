@@ -1,3 +1,4 @@
+<!--8 40 pm-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,6 +6,7 @@
     {# The next 4 lines basically gets the data from the py file so that our javascript code can use it #}
     <script type="text/javascript">
         myvar = {{data|tojson}}
+        my_input = {{time_input|tojson}}
     </script>
     
     <title>Parking!</title>
@@ -54,7 +56,7 @@
 			var data = google.visualization.arrayToDataTable(myvar);
 			
 			var options = {
-                title: 'Garage availability in spaces at 10:15 AM on an average (literally) day',
+                title: 'Garage availability at ' + my_input,
                 curveType: 'function',
                 legend: { position: 'bottom' }
             };
