@@ -3,6 +3,10 @@
     <!-- Pie Chart to show garage availability in faculty/staff-->
     <head>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        {# The next 4 lines basically gets the data from the py file so that our javascript code can use it #}
+        <script type="text/javascript">
+            myvar = {{data|tojson}}
+        </script>
     </head>
 
     <body>
@@ -14,6 +18,9 @@
             <p>
                 Enter an hour in HH format:
                 <input type="text" name="hour" value="{{hour}}">
+                Enter a date in YYYY-MM-DD format:
+                <input type="text" name="date" value="{{date_input}}">
+                <input type="submit">
             </p>
         <br></br>
             <p>
