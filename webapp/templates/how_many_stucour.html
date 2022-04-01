@@ -64,11 +64,13 @@
     <!-- Saves which button was selected after submitting -->
     <script>
         document.getElementById("{{term}}").checked = true;
-        // document.getElementById("M").checked = true;
-        // document.getElementById("TU").checked = true;
-        // document.getElementById("W").checked = true;
-        // document.getElementById("TH").checked = true;
-        // document.getElementById("F").checked = true;
+        {% if days %}
+        document.getElementById("M").checked = {{ "true" if days[0] == "on" else "false" }};
+        document.getElementById("TU").checked = {{ "true" if days[1] == "on" else "false" }};
+        document.getElementById("W").checked = {{ "true" if days[2] == "on" else "false" }};
+        document.getElementById("TH").checked = {{ "true" if days[3] == "on" else "false" }};
+        document.getElementById("F").checked = {{ "true" if days[4] == "on" else "false" }};
+        {% endif %} 
     </script>
 
     {%if cur%}
