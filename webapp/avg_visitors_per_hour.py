@@ -3,7 +3,7 @@ import psycopg, re, app
 
 def select_garage():
     query = """
-        SELECT hour, avg_visitors
+        SELECT hour::text || ':00', avg_visitors
         FROM avg_visitors_per_hour(%s)
         ORDER BY hour
         """

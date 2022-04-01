@@ -3,7 +3,6 @@ import psycopg, app
 
 def index():
     term = request.args.get("term", "")
-
     monday = request.args.get("M", "")
     tuesday = request.args.get("TU", "")
     wednesday = request.args.get("W", "")
@@ -31,11 +30,16 @@ def index():
 
             #turns numerical term into readable term
             strTerm = processStrings(term)
+
+            #puts days into an array to be processed for checkbox retention
+            days = [monday, tuesday, wednesday, thursday, friday]
         except Exception as error:
             flash(f'Error in selections.')
             cur = None
+            days = None
 
-        return render_template("how_many_stucour.html", term=term, strTerm=strTerm, day=day, cur=cur)
+        return render_template("how_many_stucour.html", term=term, strTerm=strTerm, day=day, cur=cur, days=days)
+    
     else:
         return render_template("how_many_stucour.html")
     
