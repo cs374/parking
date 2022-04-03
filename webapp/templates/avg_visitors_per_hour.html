@@ -10,7 +10,10 @@
     <title>Parking!</title>
 </head>
 <body>
-    <h2>avg_visitors_per_hour query</h2>
+
+    <h2>Average Visitors in a Garage</h2>
+
+	<a href="/">Home Page</a>
 
     <form>
         <p>
@@ -44,7 +47,7 @@
 
 		function drawTable() {
 			var jsdata = new google.visualization.DataTable();
-			jsdata.addColumn('number', 'Hour');
+			jsdata.addColumn('string', 'Hour');
 			jsdata.addColumn('number', 'Average Visitors');
 			
             jsdata.addRows(myvar);
@@ -67,16 +70,20 @@
 			var options = {
 			title: 'Average Visitors Per Hour - {{garage_input}}',
 			curveType: 'function',
-			legend: { position: 'bottom' }
+			legend: { position: 'bottom' },
    			};
 	  
 			var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 	  
 			chart.draw(data, options);
-		}
+
+         };
+		
+
 	</script>
+
 	<body>
-		<div id="curve_chart" style="width: 1000px; height: 500px"></div>
+		<div id="curve_chart" style="width: 1250px; height: 750px"></div>
 	</body>
 	</html>
 
