@@ -10,11 +10,12 @@ def availableSpots():
     is_input_wrong = None
     hour_input = request.args.get("hour")
     garage_input = request.args.get("garage")
+    date_input = request.args.get("date")
     if hour_input:
-        if re.match('^[0-9][0-9]$', hour_input):
+        if re.match('^[0-9][0-9]$', hour_input) and re.match('^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$', date_input):
             db = app.return_database()
             current = db.cursor()
-            current.execute(query, (garage_input, hour_input))
+            current.execute(query, (garage_input, hour_input, date_input))
             data=current.fetchall()
         else:
             data=None
