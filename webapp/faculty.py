@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, flash, redirect
 import psycopg, re, app
 
 query = """
-SELECT deck, occupied_spaces, available_spaces
+SELECT deck, avg_occupied, avg_available
 	FROM faculty(%s, %s, %s);
 """
 
