@@ -61,23 +61,23 @@
         <div id="pie_chart" style="width: 900px; height: 500px"></div>
        
         <script>
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-    
-        function drawChart() {
-            myvar.splice(0, 0, 0, ["Garage", "Average Occupied Spaces", "Average Available Spaces"])
-			var data = google.visualization.arrayToDataTable(myvar);
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+        
+            function drawChart() {
+                myvar.splice(0, 0, 0, ["Garage", "Average Occupied Spaces", "Average Available Spaces"])
+                var data = google.visualization.arrayToDataTable(myvar);
 
-            var options = {
-                title: 'Garage availability in faculty/staff spaces'
-                curveType: 'function',
-                legend: { position: 'bottom' }
-            };
-    
-            var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+                var options = {
+                    title: 'Garage availability in faculty/staff spaces',
+                    curveType: 'function',
+                    legend: { position: 'bottom' }
+                };
+        
+                var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
 
-            chart.draw(data, options);
-        }
+                chart.draw(data, options);
+            }
         </script>
     </body>
 </html>

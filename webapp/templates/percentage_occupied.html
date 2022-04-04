@@ -59,13 +59,12 @@
 			var data = google.visualization.arrayToDataTable(myvar);
 			
 			var options = {
-                title: '',
+                title: 'Percentage of Occupied Spaces',
                 curveType: 'function',
                 legend: { position: 'bottom' }
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
-
             chart.draw(data, options);
 		}
 	</script>
