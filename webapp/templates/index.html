@@ -2,7 +2,7 @@
 <html>
     <title>HTML Tutorial</title>
     <body>
-
+        <h1><span id = 'date_and_time'></span></h1>
         <h1>Parking</h1>
         <p>Links to Charts</p>
 
@@ -19,4 +19,22 @@
         <a href="/faculty">Available Parking in Faculty/Staff Lots</a>
         
     </body>
+    <script>
+        var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+        var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+        function time() {
+            var today = new Date();
+            var hour = today.getHours();
+            var minute = today.getMinutes();
+            var second = today.getSeconds();
+            var weekday = days[today.getDay()];
+            var month = months[today.getMonth()];
+            var date = today.getDate();
+            var year = today.getFullYear();
+            document.getElementById('date_and_time').innerHTML = hour + ":" + minute + ":" + second + "</br>" + weekday + ", " + month + " " + date + ", " + year;
+        }
+
+        setInterval(time, 1000);        
+    </script>
 </html>
