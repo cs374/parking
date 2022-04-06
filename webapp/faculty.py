@@ -16,7 +16,7 @@ def availableSpots():
             db = app.return_database()
             current = db.cursor()
             current.execute(query, (garage_input, hour_input, date_input))
-            data=current.fetchall()
+            data = current.fetchall()
         else:
             data=None
             is_input_wrong = 1
