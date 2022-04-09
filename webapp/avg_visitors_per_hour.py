@@ -4,16 +4,18 @@ import psycopg, re, app
 def select_garage():
     query = """
         SELECT hour, avg_visitors
-        FROM avg_visitors_per_hour(%s)
+        FROM avg_visitors_per_hour(%s, %s)
         """
     garage_input = request.args.get("garage")
-    if garage_input:
+    date_input = request.args.get("date")
+    if garage_input and date_input:
         db = app.return_database()
         current = db.cursor()
-        current.execute(query, (garage_input,))
+        current.execute(query, (garage_input, date_input))
         data=current.fetchall()
     else:
         data=None
-        garage=None
-    return render_template("avg_visitors_per_hour.html", data=data, garage_input=garage_input)
+        garage_input=None
+        date_input=None
+    return render_template("avg_visitors_per_hour.html", data=data, garage_input=garage_input, date_input=date_input)
     

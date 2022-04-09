@@ -31,6 +31,9 @@
 			<label for="Chesapeake">Chesapeake</label><br>
 			<input type="radio" id="Mason" name="garage" value="Mason">
 			<label for="Mason">Mason</label><br>
+
+			Enter a Date: 
+			<input type="date" name="date" min="2021-01-01" max="2021-11-04" value="{{ date }}" required><br>
             <input type="submit">
         </p>
     </form>
@@ -64,11 +67,11 @@
 		google.charts.setOnLoadCallback(drawChart);
 	  
 		function drawChart() {
-			myvar.splice(0, 0, ["Garage", "Average Spaces Occupied"])
+			myvar.splice(0, 0, ["Garage", "Average Visitors Per Hour"])
 			var data = google.visualization.arrayToDataTable(myvar);
 	  
 			var options = {
-			title: 'Average Visitors Per Hour - {{garage_input}}',
+			title: 'Average Visitors Per Hour - {{garage_input}} on {{date_input}}',
 			curveType: 'function',
 			legend: { position: 'bottom' },
    			};
