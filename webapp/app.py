@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 import psycopg
-import avg_visitors_per_hour
+import visitors_per_hour
 import class_time_garage_avail
 import garage_day_stats
 import how_many_stucour
@@ -19,7 +19,7 @@ def index():
 
 @app.route("/visitors")
 def visitors():
-    return avg_visitors_per_hour.select_garage()
+    return visitors_per_hour.select_garage()
 
 @app.route("/classtime")
 def classtime():

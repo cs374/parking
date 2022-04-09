@@ -3,8 +3,8 @@ import psycopg, re, app
 
 def select_garage():
     query = """
-        SELECT hour, avg_visitors
-        FROM avg_visitors_per_hour(%s, %s)
+        SELECT hour, visitors
+        FROM visitors_per_hour(%s, %s)
         """
     garage_input = request.args.get("garage")
     date_input = request.args.get("date")
@@ -17,5 +17,5 @@ def select_garage():
         data=None
         garage_input=None
         date_input=None
-    return render_template("avg_visitors_per_hour.html", data=data, garage_input=garage_input, date_input=date_input)
+    return render_template("visitors_per_hour.html", data=data, garage_input=garage_input, date_input=date_input)
     

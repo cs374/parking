@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <h2>Average Visitors in a Garage</h2>
+    <h2>Visitors in a Garage</h2>
 
 	<a href="/">Home Page</a>
 
@@ -51,7 +51,7 @@
 		function drawTable() {
 			var jsdata = new google.visualization.DataTable();
 			jsdata.addColumn('string', 'Hour');
-			jsdata.addColumn('number', 'Average Visitors');
+			jsdata.addColumn('number', 'Visitors');
 			
             jsdata.addRows(myvar);
 			
@@ -67,11 +67,11 @@
 		google.charts.setOnLoadCallback(drawChart);
 	  
 		function drawChart() {
-			myvar.splice(0, 0, ["Garage", "Average Visitors Per Hour"])
+			myvar.splice(0, 0, ["Garage", "Visitors Per Hour"])
 			var data = google.visualization.arrayToDataTable(myvar);
 	  
 			var options = {
-			title: 'Average Visitors Per Hour - {{garage_input}} on {{date_input}}',
+			title: 'Visitors Per Hour - {{garage_input}} on {{date_input}}',
 			curveType: 'function',
 			legend: { position: 'bottom' },
    			};
