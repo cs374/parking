@@ -2,10 +2,10 @@
 DROP FUNCTION IF EXISTS avg_visitors_per_hour(g_name text);
 
 CREATE FUNCTION avg_visitors_per_hour(g_name text)
-RETURNS TABLE(deck text, hour double precision, avg_visitors bigint) AS $$
+RETURNS TABLE(date_part double precision, deck text, hour text, avg_visitors bigint) AS $$
 
-
-SELECT DISTINCT deck, EXTRACT(HOUR FROM o.time_stamp),
+SELECT DISTINCT EXTRACT(HOUR FROM o.time_stamp), deck, 
+	   CONCAT((EXTRACT(HOUR FROM o.time_stamp))::text, ':00') AS hour,
 	   SUM(o.visitor)/COUNT(DISTINCT(o.time_stamp::DATE)) AS avg_vistiors
 FROM garage AS g
 	JOIN occupancy AS o ON g.zone_id = o.zone_id
