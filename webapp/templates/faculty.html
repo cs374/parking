@@ -37,6 +37,8 @@
                 <input type="submit">
             </p>
         </form>
+
+        {% if data %}
         <div id="table_div" style="width: 500px;"></div>
 	
 	    <script type="text/javascript">
@@ -82,5 +84,6 @@
                 chart.draw(data, options);
             }
         </script>
+        {% endif %}
     </body>
 </html>
