@@ -1,3 +1,4 @@
+from datetime import date
 from flask import Flask, render_template, request, flash, redirect
 import psycopg, re, app
 
@@ -22,6 +23,8 @@ def select_hour_date():
             return render_template("percentage_occupied.html", data=data, is_input_wrong=is_input_wrong)
     else:
         data=None
-    return render_template("percentage_occupied.html", data=data, is_input_wrong=is_input_wrong)
+        hour_input='10'
+        date_input=None
+    return render_template("percentage_occupied.html", data=data, is_input_wrong=is_input_wrong, hour_input=hour_input, date_input=date_input)
 
     
