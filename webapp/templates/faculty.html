@@ -1,89 +1,94 @@
 <!DOCTYPE html>
 <html>
-    <!-- Pie Chart to show garage availability in faculty/staff-->
-    <head>
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-            myvar = {{data|tojson}}
-        </script>
-    </head>
+<!-- Pie Chart to show garage availability in faculty/staff-->
 
-    <body>
-        <h1>Available Parking in Faculty Lots</h1>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        myvar = {{ data | tojson }}
+    </script>
+</head>
 
-        <a href="/">Home Page</a>
+<body>
+    <!-- NAV BAR -->
+    {% include 'nav.html' %}
 
-        {% if is_input_wrong %}
-        WRONG INPUT FORMAT. PLEASE USE 'HH' FORMAT FOR HOUR.
-         {% endif %}
-        <form>
-            <p>
-                Enter an hour in HH format:
-                <input type="text" name="hour" value="{{hour}}">
-                Enter a date in YYYY-MM-DD format:
-                <input type="text" name="date" value="{{date_input}}">
-           
-        <br></br>
-                Enter a Garage: 
-                <br>
-                <input type="radio" id="Grace" name="garage" value="Grace">
-                <label for="Grace">Grace</label><br>
-                <input type="radio" id="Warsaw" name="garage" value="Warsaw">
-                <label for="Warsaw">Warsaw</label><br>
-                <input type="radio" id="Ballard" name="garage" value="Ballard">
-                <label for="Ballard">Ballard</label><br>
-                <input type="radio" id="Mason" name="garage" value="Mason">
-                <label for="Mason">Mason</label><br>
-                <input type="submit">
-            </p>
-        </form>
+    <h1>Available Parking in Faculty Lots</h1>
 
-        {% if data %}
-        <div id="table_div" style="width: 500px;"></div>
-	
-	    <script type="text/javascript">
-            google.charts.load('current', { 'packages': ['table'] });
-            google.charts.setOnLoadCallback(drawTable);
+    <a href="/">Home Page</a>
 
-            function drawTable() {
-                var jsdata = new google.visualization.DataTable();
-                jsdata.addColumn('string', 'Parking Deck');
-                jsdata.addColumn('number', 'Average Occupied Spaces');
-                jsdata.addColumn('number', 'Average Available Spaces');
-                
-                jsdata.addRows(myvar);
-                
-                var table = new google.visualization.Table(document.getElementById('table_div'));
-                table.draw(jsdata, { showRowNumber: true, width: '100%', height: '100%' });
-            }
+    {% if is_input_wrong %}
+    WRONG INPUT FORMAT. PLEASE USE 'HH' FORMAT FOR HOUR.
+    {% endif %}
+    <form>
+        <p>
+            Enter an hour in HH format:
+            <input type="text" name="hour" value="{{hour}}">
+            Enter a date in YYYY-MM-DD format:
+            <input type="text" name="date" value="{{date_input}}">
 
-	    </script>
+            <br></br>
+            Enter a Garage:
+            <br>
+            <input type="radio" id="Grace" name="garage" value="Grace">
+            <label for="Grace">Grace</label><br>
+            <input type="radio" id="Warsaw" name="garage" value="Warsaw">
+            <label for="Warsaw">Warsaw</label><br>
+            <input type="radio" id="Ballard" name="garage" value="Ballard">
+            <label for="Ballard">Ballard</label><br>
+            <input type="radio" id="Mason" name="garage" value="Mason">
+            <label for="Mason">Mason</label><br>
+            <input type="submit">
+        </p>
+    </form>
 
-        <div id="pie_chart" style="width: 900px; height: 500px"></div>
-       
-        <script>
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
-        
-            function drawChart() {
-                myvar.splice(0, 0, ["Garage", "Average Occupied Spaces", "Average Available Spaces"]);
-                var data = google.visualization.arrayToDataTable([
-                    ['Type', 'Number of Spaces'],
-                    ['Average Occupied Spaces', {{ data[0][1] }}],
-                    ['Average Available Spaces', {{ data[0][2] }}]
+    {% if data %}
+    <div id="table_div" style="width: 500px;"></div>
+
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['table'] });
+        google.charts.setOnLoadCallback(drawTable);
+
+        function drawTable() {
+            var jsdata = new google.visualization.DataTable();
+            jsdata.addColumn('string', 'Parking Deck');
+            jsdata.addColumn('number', 'Average Occupied Spaces');
+            jsdata.addColumn('number', 'Average Available Spaces');
+
+            jsdata.addRows(myvar);
+
+            var table = new google.visualization.Table(document.getElementById('table_div'));
+            table.draw(jsdata, { showRowNumber: true, width: '100%', height: '100%' });
+        }
+
+    </script>
+
+    <div id="pie_chart" style="width: 900px; height: 500px"></div>
+
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            myvar.splice(0, 0, ["Garage", "Average Occupied Spaces", "Average Available Spaces"]);
+            var data = google.visualization.arrayToDataTable([
+                ['Type', 'Number of Spaces'],
+                ['Average Occupied Spaces', {{ data[0][1] }}],
+        ['Average Available Spaces', {{ data[0][2] }}]
                 ]);
 
-                var options = {
-                    title: 'Garage availability in faculty/staff spaces',
-                    curveType: 'function',
-                    legend: { position: 'bottom' }
-                };
-        
-                var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+        var options = {
+            title: 'Garage availability in faculty/staff spaces',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+        };
 
-                chart.draw(data, options);
+        var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+
+        chart.draw(data, options);
             }
-        </script>
-        {% endif %}
-    </body>
+    </script>
+    {% endif %}
+</body>
+
 </html>

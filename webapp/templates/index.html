@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html>
-    <title>HTML Tutorial</title>
-    <body>
-        <h1><span id = 'date_and_time'></span></h1>
-        <h1>Parking</h1>
-        <p>Links to Charts</p>
 
-        <a href="/visitors">Visitors per Hour</a>
-        <br></br>
-        <a href="/classtime">Parking Spots Available by Classtime</a>
-        <br></br>
-        <a href="/garages">Garage Statistics</a>
-        <br></br>
-        <a href="/students">Student Parking by Day</a>
-        <br></br>
-        <a href="/occupied">Statistics of Occupied Parking</a>
-        <br></br>
-        <a href="/faculty">Available Parking in Faculty/Staff Lots</a>
-        
-    </body>
-    <script>
-        var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-        var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+<head>
+    <title>Team Parking</title>
+</head>
 
-        function time() {
-            var today = new Date();
-            var hour = today.getHours();
-            var minute = today.getMinutes();
-            var second = today.getSeconds();
-            var weekday = days[today.getDay()];
-            var month = months[today.getMonth()];
-            var date = today.getDate();
-            var year = today.getFullYear();
-            document.getElementById('date_and_time').innerHTML = hour + ":" + minute + ":" + second + "</br>" + weekday + ", " + month + " " + date + ", " + year;
-        }
 
-        setInterval(time, 1000);        
-    </script>
+<body>
+    <!-- NAV BAR -->
+    {% include 'nav.html' %}
+
+    <h1>Parking</h1>
+    <h1><span id='date_and_time'></span></h1>
+
+    <!-- <p>Links to Charts</p>
+
+    <a href="/visitors">Visitors per Hour</a>
+    <br></br>
+    <a href="/classtime">Parking Spots Available by Classtime</a>
+    <br></br>
+    <a href="/garages">Garage Statistics</a>
+    <br></br>
+    <a href="/students">Student Parking by Day</a>
+    <br></br>
+    <a href="/occupied">Statistics of Occupied Parking</a>
+    <br></br>
+    <a href="/faculty">Available Parking in Faculty/Staff Lots</a> -->
+
+</body>
+<script>
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    function time() {
+        var today = new Date();
+        var hour = today.getHours();
+        var minute = today.getMinutes();
+        var second = today.getSeconds();
+        var weekday = days[today.getDay()];
+        var month = months[today.getMonth()];
+        var date = today.getDate();
+        var year = today.getFullYear();
+        document.getElementById('date_and_time').innerHTML = hour + ":" + minute + ":" + second + "</br>" + weekday + ", " + month + " " + date + ", " + year;
+    }
+
+    setInterval(time, 1000);        
+</script>
+
 </html>

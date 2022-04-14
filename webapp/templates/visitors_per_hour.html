@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    {# The next 4 lines basically gets the data from the py file so that our javascript code can use it #}
-    <script type="text/javascript">
-        myvar = {{data|tojson}}
-    </script>
-    
-    <title>Parking!</title>
-</head>
-<body>
 
-    <h2>Visitors in a Garage</h2>
+<head>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	{# The next 4 lines basically gets the data from the py file so that our javascript code can use it #}
+	<script type="text/javascript">
+		myvar = {{ data | tojson }}
+	</script>
+
+	<title>Parking!</title>
+</head>
+
+<body>
+	<!-- NAV BAR -->
+	{% include 'nav.html' %}
+
+	<h2>Visitors in a Garage</h2>
 
 	<a href="/">Home Page</a>
 
-    <form>
-        <p>
-            Enter a Garage: 
+	<form>
+		<p>
+			Enter a Garage:
 			<br>
 			<input type="radio" id="Grace" name="garage" value="Grace" required>
 			<label for="Grace">Grace</label><br>
@@ -32,18 +36,18 @@
 			<input type="radio" id="Mason" name="garage" value="Mason">
 			<label for="Mason">Mason</label><br>
 
-			Enter a Date: 
+			Enter a Date:
 			<input type="date" name="date" value="{{ date_input }}" min="2021-01-01" max="2021-11-04" required><br>
-            <input type="submit">
-        </p>
-    </form>
+			<input type="submit">
+		</p>
+	</form>
 
 	<script>
 		document.getElementById("{{ garage_input }}").checked = true;
 	</script>
 
-    <div id="table_div" style="width: 500px;"></div>
-	
+	<div id="table_div" style="width: 500px;"></div>
+
 	<script type="text/javascript">
 		google.charts.load('current', { 'packages': ['table'] });
 		google.charts.setOnLoadCallback(drawTable);
@@ -52,9 +56,9 @@
 			var jsdata = new google.visualization.DataTable();
 			jsdata.addColumn('string', 'Hour');
 			jsdata.addColumn('number', 'Visitors');
-			
-            jsdata.addRows(myvar);
-			
+
+			jsdata.addRows(myvar);
+
 			var table = new google.visualization.Table(document.getElementById('table_div'));
 			table.draw(jsdata, { showRowNumber: false, width: '100%', height: '100%' });
 		}
@@ -63,32 +67,34 @@
 
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
-		google.charts.load('current', {'packages':['corechart']});
+		google.charts.load('current', { 'packages': ['corechart'] });
 		google.charts.setOnLoadCallback(drawChart);
-	  
+
 		function drawChart() {
 			myvar.splice(0, 0, ["Garage", "Visitors Per Hour"])
 			var data = google.visualization.arrayToDataTable(myvar);
-	  
+
 			var options = {
-			title: 'Visitors Per Hour - {{garage_input}} on {{date_input}}',
-			curveType: 'function',
-			legend: { position: 'bottom' },
-   			};
-	  
+				title: 'Visitors Per Hour - {{garage_input}} on {{date_input}}',
+				curveType: 'function',
+				legend: { position: 'bottom' },
+			};
+
 			var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-	  
+
 			chart.draw(data, options);
 
-         };
-		
+		};
+
 
 	</script>
 
 	<body>
 		<div id="curve_chart" style="width: 1250px; height: 750px"></div>
 	</body>
-	</html>
+
+</html>
 
 </body>
+
 </html>

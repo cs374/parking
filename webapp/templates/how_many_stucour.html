@@ -2,28 +2,12 @@
 
 <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <style>
-        p {
-            margin: 0;
-        }
-
-        #days {
-            display: flex;
-            flex-direction: row;
-        }
-
-        h1 {
-            margin-bottom: 0;
-        }
-
-        #sub {
-            margin: 10px 0;
-            font-style: italic;
-        }
-    </style>
 </head>
 
 <body>
+    <!-- NAV BAR -->
+    {% include 'nav.html' %}
+
     <h1>Finding Student Enrollment</h1>
     <p id="sub">Results only show class times with more than 50 people and more than 5 courses.</p>
 
@@ -31,7 +15,7 @@
 
     <form>
         <p>Select a Term:</p>
-        <input type="radio" id="1211" name="term" value="1211">
+        <input type="radio" id="1211" name="term" value="1211" required>
         <label for="1211">Spring 2021</label><br>
         <input type="radio" id="1218" name="term" value="1218">
         <label for="1218">Fall 2021</label><br>
