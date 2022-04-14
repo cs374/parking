@@ -10,8 +10,12 @@
     # Windows
     .venv\scripts\activate
 2. Install the module
+
     pip install Flask-Navigation
+    
 3. In the main app.py, import and initialize
+
     from flask_navigation import Navigation
     ...
     nav = Navigation(app)
+    
