@@ -19,7 +19,10 @@
 
 <body>
    <!-- NAV BAR -->
+   {% with home=False, classtime=False, garages=False, students=False,
+   occupied=True, faculty=False, visitors=False %}
    {% include 'nav.html' %}
+   {% endwith %}
 
    <h1>Percentage of Occupied Spaces</h1>
    <a href="/">Home Page</a>

@@ -7,7 +7,10 @@
 
 <body>
     <!-- NAV BAR -->
+    {% with home=False, classtime=False, garages=True, students=False,
+    occupied=False, faculty=False, visitors=False %}
     {% include 'nav.html' %}
+    {% endwith %}
 
     <h1>Get Garage Availability</h1>
     <a href="/">Home Page</a>

@@ -6,7 +6,10 @@
 
 <body>
     <!-- NAV BAR -->
+    {% with home=False, classtime=False, garages=False, students=True,
+    occupied=False, faculty=False, visitors=False %}
     {% include 'nav.html' %}
+    {% endwith %}
 
     <h1>Finding Student Enrollment</h1>
     <p id="sub">Results only show class times with more than 50 people and more than 5 courses.</p>

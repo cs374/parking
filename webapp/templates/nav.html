@@ -33,6 +33,12 @@
         .navbar-dark .navbar-toggler-icon {
             filter: brightness(100);
         }
+
+        .navbar-dark .navbar-nav .nav-link.active,
+        .navbar-dark .navbar-nav .show>.nav-link {
+            color: #CBDF90;
+            border-bottom: 3px solid #CBDF90;
+        }
     </style>
 </head>
 
@@ -48,25 +54,25 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link {{ 'active' if home else '' }}" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="visitors">Visitors</a>
+                        <a class="nav-link {{ 'active' if visitors else '' }}" href="visitors">Visitors</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="classtime">Classes and Parking</a>
+                        <a class="nav-link {{ 'active' if classtime else '' }}" href="classtime">Classes and Parking</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="garages">Garage per Day</a>
+                        <a class="nav-link {{ 'active' if garages else '' }}" href="garages">Garage per Day</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="students">Classes and Parking</a>
+                        <a class="nav-link {{ 'active' if students else '' }}" href="students">Classes and Parking</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="occupied">Percent Occupied</a>
+                        <a class="nav-link {{ 'active' if occupied else '' }}" href="occupied">Percent Occupied</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="faculty">Faculty Spots</a>
+                        <a class="nav-link {{ 'active' if faculty else '' }}" href="faculty">Faculty Spots</a>
                     </li>
                 </ul>
             </div>

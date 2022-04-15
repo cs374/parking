@@ -13,7 +13,10 @@
 
 <body>
 	<!-- NAV BAR -->
+	{% with home=False, classtime=False, garages=False, students=False,
+	occupied=False, faculty=False, visitors=True %}
 	{% include 'nav.html' %}
+	{% endwith %}
 
 	<h2>Visitors in a Garage</h2>
 

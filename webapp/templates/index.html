@@ -8,7 +8,10 @@
 
 <body>
     <!-- NAV BAR -->
+    {% with home=True, classtime=False, garages=False, students=False,
+    occupied=False, faculty=False, visitors=False %}
     {% include 'nav.html' %}
+    {% endwith %}
 
     <h1>Parking</h1>
     <h1><span id='date_and_time'></span></h1>
