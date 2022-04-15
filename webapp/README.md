@@ -1,3 +1,7 @@
+*** EDIT TO NAV BAR ***
+Python 10 has issues loading the Navigation module. Switched to a bootstrap navbar instead. Will delete the below instructions once I confirm how to set the active tab in the bootstrap framework.
+
+
 *** To View the Navigation Bar ***
 - inside of venv, install the Flask-Navigation module as follows...
 1. Open up the virtual environment

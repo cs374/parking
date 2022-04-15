@@ -1,6 +1,6 @@
 from typing import ItemsView
 from flask import Flask, render_template
-from flask_navigation import Navigation
+#from flask_navigation import Navigation
 
 import psycopg
 import visitors_per_hour
@@ -11,19 +11,19 @@ import percentage_occupied
 import faculty
 
 app = Flask(__name__)
-nav = Navigation(app)
+#nav = Navigation(app)
 app.secret_key = "key"
 
-# Create Nav Bar
-nav.Bar('top', [
-    nav.Item('Home', 'index'),
-    nav.Item('Visitors', 'visitors'),
-    nav.Item('Classes and Parking', 'classtime'),
-    nav.Item('Garage per Day', 'garages'),
-    nav.Item('Classes and Parking', 'students'),
-    nav.Item('Percent Occupied', 'occupied'),
-    nav.Item('Faculty Spots', 'facultySpots')
-    ])
+# # Create Nav Bar
+# nav.Bar('top', [
+#     nav.Item('Home', 'index'),
+#     nav.Item('Visitors', 'visitors'),
+#     nav.Item('Classes and Parking', 'classtime'),
+#     nav.Item('Garage per Day', 'garages'),
+#     nav.Item('Classes and Parking', 'students'),
+#     nav.Item('Percent Occupied', 'occupied'),
+#     nav.Item('Faculty Spots', 'facultySpots')
+#     ])
 
 def return_database():
     return psycopg.connect("host=localhost dbname=parking user=parking password=JUvWSJ2hgRp93TmU")
