@@ -2,6 +2,7 @@
 <html>
 
 <head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}"/>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	{# The next 4 lines basically gets the data from the py file so that our javascript code can use it #}
 	<script type="text/javascript">
@@ -11,21 +12,18 @@
 	<title>Parking!</title>
 </head>
 
-<body>
+<body class="center">
 	<!-- NAV BAR -->
 	{% with home=False, classtime=False, garages=False, students=False,
 	occupied=False, faculty=False, visitors=True %}
 	{% include 'nav.html' %}
 	{% endwith %}
 
-	<h2>Visitors in a Garage</h2>
-
-	<a href="/">Home Page</a>
+	<h1>Visitors in a Garage</h1>
 
 	<form>
 		<p>
-			Enter a Garage:
-			<br>
+			<h5>Enter a Garage:</h5>
 			<input type="radio" id="Grace" name="garage" value="Grace" required>
 			<label for="Grace">Grace</label><br>
 			<input type="radio" id="Warsaw" name="garage" value="Warsaw">
@@ -37,11 +35,10 @@
 			<input type="radio" id="Chesapeake" name="garage" value="Chesapeake">
 			<label for="Chesapeake">Chesapeake</label><br>
 			<input type="radio" id="Mason" name="garage" value="Mason">
-			<label for="Mason">Mason</label><br>
-
-			Enter a Date:
-			<input type="date" name="date" value="{{ date_input }}" min="2021-01-01" max="2021-11-04" required><br>
-			<input type="submit">
+			<label for="Mason">Mason</label><br><br>
+			<h5>Enter a Date:</h5>
+			<input class="text-box" type="date" name="date" value="{{ date_input }}" min="2021-01-01" max="2021-11-04" required><br><br>
+			<input class="submit" type="submit">
 		</p>
 	</form>
 
