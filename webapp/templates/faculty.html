@@ -3,13 +3,14 @@
 <!-- Pie Chart to show garage availability in faculty/staff-->
 
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}"/>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         myvar = {{ data | tojson }}
     </script>
 </head>
 
-<body>
+<body class="center">
     <!-- NAV BAR -->
     {% with home=False, classtime=False, garages=False, students=False,
     occupied=False, faculty=True, visitors=False %}
@@ -18,21 +19,18 @@
 
     <h1>Available Parking in Faculty Lots</h1>
 
-    <a href="/">Home Page</a>
-
     {% if is_input_wrong %}
     WRONG INPUT FORMAT. PLEASE USE 'HH' FORMAT FOR HOUR.
     {% endif %}
     <form>
         <p>
-            Enter an hour in HH format:
-            <input type="text" name="hour" value="{{hour}}">
-            Enter a date in YYYY-MM-DD format:
-            <input type="text" name="date" value="{{date_input}}">
+            <h5>Enter an hour in HH format:</h5>
+            <input style="width: 50px;" class="text-box" type="text" name="hour" value="{{hour}}">
+            <h5>Enter a date in YYYY-MM-DD format:</h5>
+            <input class="text-box" type="text" name="date" value="{{date_input}}">
 
             <br></br>
-            Enter a Garage:
-            <br>
+            <h5>Enter a Garage:</h5>
             <input type="radio" id="Grace" name="garage" value="Grace">
             <label for="Grace">Grace</label><br>
             <input type="radio" id="Warsaw" name="garage" value="Warsaw">
@@ -40,8 +38,8 @@
             <input type="radio" id="Ballard" name="garage" value="Ballard">
             <label for="Ballard">Ballard</label><br>
             <input type="radio" id="Mason" name="garage" value="Mason">
-            <label for="Mason">Mason</label><br>
-            <input type="submit">
+            <label for="Mason">Mason</label><br><br>
+            <input class="submit" type="submit">
         </p>
     </form>
 
