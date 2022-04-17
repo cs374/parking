@@ -1,0 +1,29 @@
+.center {
+    text-align: center;
+}
+
+.submit {
+    background-color: #1B4079;
+	padding: 10px 10px;
+	color: white;
+	border-radius: 15px;
+	font-size: 20px;
+}
+
+.submit:hover {
+	background-color: black;
+}
+
+h1 {
+    font-size: 300%;
+}
+
+#table_div {
+	display: block;
+	margin: 0 auto;
+}
+
+#columnchart_values {
+	display: block;
+	margin: 0 auto;
+}

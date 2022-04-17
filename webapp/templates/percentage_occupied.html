@@ -2,6 +2,7 @@
 <html>
 
 <head>
+   <link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}"/>
    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
    {# The next 4 lines basically gets the data from the py file so that our javascript code can use it #}
    <script type="text/javascript">
@@ -24,22 +25,21 @@
    {% include 'nav.html' %}
    {% endwith %}
 
-   <h1>Percentage of Occupied Spaces</h1>
-   <a href="/">Home Page</a>
+   <h1 class="center" style="font-size: 300%;">Percentage of Occupied Spaces</h1>
    {% if is_input_wrong %}
    WRONG INPUT FORMAT. PLEASE USE 'HH' FORMAT FOR HOUR 'YYYY-MM-DD' FOR DATE.
    {% endif %}
-   <form>
+   <form class="center">
       <p>
-         Enter an hour in HH format:
+         <h5> Enter an hour in HH format: </h5>
          <input type="text" name="hour" value="{{hour_input}}" required> <br>
-         Enter a date in YYYY-MM-DD format:
-         <input type="date" name="date" value="{{date_input}}" min="2021-01-01" max="2021-11-04" required> <br>
-         <input type="submit">
+         <h5> Enter a date in MM/DD/YYYY format: </h5>
+         <input type="date" name="date" value="{{date_input}}" min="2021-01-01" max="2021-11-04" required> <br><br>
+         <input class="submit" type="submit">
       </p>
    </form>
-   <div id="table_div" style="width: 500px;"></div>
-   <script type="text/javascript">
+   <div class="center" id="table_div" style="width: 500px;"></div>
+   <script class="center" type="text/javascript">
       google.charts.load('current', { 'packages': ['table'] });
       google.charts.setOnLoadCallback(drawTable);
 
@@ -56,7 +56,7 @@
       }
 
    </script>
-   <div id="columnchart_values" style="width: 900px; height: 500px"></div>
+   <div class="center" id="columnchart_values" style="width: 500px;"></div>
    <script type="text/javascript">
       google.charts.load("current", { packages: ['corechart'] });
       google.charts.setOnLoadCallback(drawChart);
