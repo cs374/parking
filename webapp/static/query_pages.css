@@ -27,3 +27,11 @@ h1 {
 	display: block;
 	margin: 0 auto;
 }
+
+.text-box {
+	padding: 7px 7px;
+	font-size: 20px;
+	text-align: center;
+	border-radius: 15px;
+
+}
