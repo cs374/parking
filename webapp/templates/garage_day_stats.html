@@ -2,7 +2,7 @@
 
 <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}"/>
 </head>
 
 <body>
@@ -12,22 +12,21 @@
     {% include 'nav.html' %}
     {% endwith %}
 
-    <h1>Get Garage Availability</h1>
-    <a href="/">Home Page</a>
+    <h1 class="center">Get Garage Availability</h1>
 
     {% if cur1 %}
-    <form>
-        <p>Select a Term:</p>
+    <form class="center">
+        <h5>Select a Term:</h5>
         {% for garage in cur1 %}
         <input type="radio" id="Z{{ garage[0] }}" name="garage" value="{{ garage[0] }}">
         <label for="Z{{ garage[0] }}">{{ garage[1] }}: {{ garage[2] }}</label><br>
         {% endfor %}
 
         <p>Select a Day:</p>
-        <input type="date" name="date" value="{{ date }}" min="2021-01-01" max="2021-11-04">
+        <input class="text-box" type="date" name="date" value="{{ date }}" min="2021-01-01" max="2021-11-04">
         </div>
-
-        <p><input type="submit"></p>
+        <br /> <br />
+        <p><input class="submit" type="submit"></p>
     </form>
     {% endif %}
 

@@ -18,12 +18,7 @@ h1 {
     font-size: 300%;
 }
 
-#table_div {
-	display: block;
-	margin: 0 auto;
-}
-
-#columnchart_values {
+#table_div, #columnchart_values, #curve_chart {
 	display: block;
 	margin: 0 auto;
 }
