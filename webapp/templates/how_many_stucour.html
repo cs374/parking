@@ -1,10 +1,11 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}"/>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
-<body>
+<body class="center">
     <!-- NAV BAR -->
     {% with home=False, classtime=False, garages=False, students=True,
     occupied=False, faculty=False, visitors=False %}
@@ -12,10 +13,10 @@
     {% endwith %}
 
     <h1>Finding Student Enrollment</h1>
-    <p id="sub">Results only show class times with more than 50 people and more than 5 courses.</p>
+    <h5 id="sub">Results only show class times with more than 50 people and more than 5 courses.</h5>
 
     <form>
-        <p>Select a Term:</p>
+        <h5>Select a Term:</h5>
         <input type="radio" id="1211" name="term" value="1211" required>
         <label for="1211">Spring 2021</label><br>
         <input type="radio" id="1218" name="term" value="1218">
@@ -23,7 +24,7 @@
 
         <br>
 
-        <p>Select a Day/Days:</p>
+        <h5>Select a Day/Days:</h5>
         <div id="days">
             <input type="checkbox" name="M" id="M">
             <label for="M">Monday</label><br>
@@ -39,7 +40,7 @@
 
         <br>
 
-        <p><input type="submit"></p>
+        <p><input class="submit" type="submit"></p>
     </form>
 
     {% for message in get_flashed_messages() %}
