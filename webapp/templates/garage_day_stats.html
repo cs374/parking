@@ -13,7 +13,7 @@
     {% endwith %}
 
     <br>
-    <h1 class="center">Get Garage Availability</h1>
+    <h1 class="center">Garage Occupancy</h1>
 
     <p class="center" style="margin-left: 10%; margin-right: 10%;"> 
 		This query is designed to show how the number of occupied spaces for a specific garage fluctuates
@@ -23,13 +23,14 @@
 
     {% if cur1 %}
     <form class="center">
-        <h5>Select a Term:</h5>
+        <h5>Select a Garage:</h5>
         {% for garage in cur1 %}
         <input type="radio" id="Z{{ garage[0] }}" name="garage" value="{{ garage[0] }}" checked>
         <label for="Z{{ garage[0] }}">{{ garage[1] }}: {{ garage[2] }}</label><br>
         {% endfor %}
 
-        <p>Select a Day:</p>
+        <br>
+        <h5>Select a Date:</h5>
         <input class="text-box" type="date" name="date" value="{{ date }}" min="2021-01-01" max="2021-11-04">
         </div>
         <br /> <br />
