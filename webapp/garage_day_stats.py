@@ -9,7 +9,7 @@ def garage_day_stats():
     """
     #make two cursors
     garage = request.args.get("garage", "")
-    date = request.args.get("date", "")
+    date = request.args.get("date", "2021-02-17")
     con = app.return_database()
     cur1 = con.cursor()
  

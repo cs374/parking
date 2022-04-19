@@ -41,7 +41,12 @@ def index():
         return render_template("how_many_stucour.html", term=term, strTerm=strTerm, day=day, cur=cur, days=days)
     
     else:
-        return render_template("how_many_stucour.html")
+        term = "Spring 2021"
+        strTerm = "Spring 2021"
+        day = "Monday"
+        cur = None
+        days = "Monday"
+        return render_template("how_many_stucour.html", term=term, strTerm=strTerm, day=day, cur=cur, days=days)
     
 def getDays(mon, tues, wed, thur, fri):
     day = ''

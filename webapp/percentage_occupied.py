@@ -1,6 +1,6 @@
 from datetime import date
 from flask import Flask, render_template, request, flash, redirect
-import psycopg, re, app
+import psycopg, re, app, datetime
 
 query = """
     SELECT deck, avg_occupied
@@ -24,7 +24,7 @@ def select_hour_date():
     else:
         data=None
         hour_input='10'
-        date_input=None
+        date_input="2021-02-17"
     return render_template("percentage_occupied.html", data=data, is_input_wrong=is_input_wrong, hour_input=hour_input, date_input=date_input)
 
     

@@ -15,7 +15,7 @@ def select_garage():
         data=current.fetchall()
     else:
         data=None
-        garage_input=None
-        date_input=None
+        garage_input="Grace"
+        date_input="2021-02-17"
     return render_template("visitors_per_hour.html", data=data, garage_input=garage_input, date_input=date_input)
     

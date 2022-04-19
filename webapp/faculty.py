@@ -23,6 +23,9 @@ def availableSpots():
             return render_template("faculty.html", data=data, is_input_wrong=is_input_wrong)
     else:
         data=None
-    return render_template("faculty.html", data=data, is_input_wrong=is_input_wrong)
+        hour_input="10"
+        date_input="2021-02-17"
+    return render_template("faculty.html", hour_input=hour_input, date_input=date_input,
+                            data=data, is_input_wrong=is_input_wrong)
 
     
