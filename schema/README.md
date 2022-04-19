@@ -1,6 +1,4 @@
-# parking
-Team 4: Parking Helpers
-Members: Cate Baker, Jacquelyn Hendricks, Grace Bailey, Alex Tran
+# STEPS TO CREATE DATABASE
 
 IMPORTANT NOTE: Don't run certain commands multiple times without resetting everything first. For example, if you run copy.sh multiple times without 
 running createtables first to reset the tables, it will duplicate rows. 

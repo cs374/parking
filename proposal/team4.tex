@@ -1,0 +1,158 @@
+%%
+%% GENERAL INSTRUCTIONS
+%%
+%% Each team member should contribute to the writing/editing of each section.
+%%
+%% Replace the \section titles with specific phrases related to your project.
+%%
+%% You may rearrange the order as long as you address the main prompts below.
+%%
+
+\documentclass[11pt]{article}
+
+% fonts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[sc]{mathpazo}
+
+% spacing
+\usepackage[margin=1in]{geometry}
+\setlength{\parskip}{1ex}
+\usepackage{multicol}
+\usepackage{setspace}
+\onehalfspacing
+
+% orphans and widows
+\clubpenalty=10000
+\widowpenalty=10000
+
+%------------------------------------------------------------------------------%
+\begin{document}
+
+%% Insert the name of your project, the name of your team, and the name and email of each student.
+
+\begin{center}
+\bfseries\huge
+JMU Parking Helper Application
+\end{center}
+
+\begin{center}
+\itshape\large
+Team 4 Parking
+\end{center}
+
+\begin{multicols}{4}
+\centering
+
+Jacquelyn Hendricks \\
+{\footnotesize hendrijn@dukes.jmu.edu}
+
+Catherine Baker \\
+{\footnotesize baker3cl@dukes.jmu.edu}
+
+Grace Bailey \\
+{\footnotesize baileyga@dukes.jmu.edu}
+
+Alex Tran \\
+{\footnotesize tranaa@dukes.jmu.edu}
+
+\end{multicols}
+
+%------------------------------------------------------------------------------%
+\section*{Problem and Vision}
+
+%% Introduce the main idea of your project. What is the exact problem you are going to solve? What is your vision for the solution? How will this benefit potential stakeholders? (e.g., users, data owners, society) Provide background information about the problem domain.
+
+
+\qquad Our team noticed that students at James Madison University lack access to comprehensive data relating to on campus parking. The only information currently shared online by the university is the capacity of each garage at a given time. While slightly beneficial, this measure of "fullness" leaves out important details. This results in students feeling frustrated and inconvenienced on a daily basis. Our project will be an interactive application that helps students find parking spots quickly and efficiently by showing peak times, parking space availability throughout the day, the best times for finding parking spots, and other helpful information.
+
+Students take on the daily burden of figuring out when to try parking on campus. Some students arrive on campus hours before their class actually begins while others arrive as classes release in attempt to secure a spot. With the help of our site, students will be able to better plan for their days and spend less time worrying about parking. By providing students with crucial information such as what times have the highest rates of cars exiting a garage, they can better plan around class schedules and peak times. Our application could also help the university's Department of Parking and Transportation dedicate parking resources and funds to the places where it can have the biggest impact. 
+
+%------------------------------------------------------------------------------%
+\section*{Data and Questions}
+
+%% Describe the data sets you will use. Where does the data come from, and who owns it? What is the data primarily about? About how much data is available? Include several example rows/instances to illustrate what the data looks like.
+
+%% Discuss two or three specific questions about the data that your project will answer. How are these questions interesting? Why are they important questions to answer? What resources already exist that help answer these questions?
+
+\qquad For our project, we will be using a mix of data from Parking Services and the Office of the Registrar. One of the data sets from Parking Services includes a timestamp which increments every five minutes, what zone the parking location is in, how many spaces were occupied, and how many people visited the parking location during that respective time. Another data set from Parking Services includes a zone id, what the name of the deck is, who is allowed to park in that zone, and how many spaces are in that location. Finally, we will be using the standard class meeting times from the Office of the Registrar to analyze how class times affect parking.
+
+\vskip .7in
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{|c c c c|} 
+        \hline
+        timestamp & zone-id & occupied & visitors \\ [0.5ex] 
+        \hline\hline
+        2021-09-29 00:01 & 2 & 14 & 0 \\ 
+        \hline
+        2021-09-29 08:46 & 2 & 127 & 20 \\
+        \hline
+        2021-09-29 09:16 & 3 & 532 & 38 \\
+        \hline
+    \end{tabular}
+    \caption{Garage Info}
+    
+    \vskip 0.1in
+    
+    \begin{tabular}{|c c c c|} 
+        \hline
+        zone-id & deck & zone & spaces \\ [0.5ex] 
+        \hline\hline
+        2 & Warsaw & Faculty/Staff & 223 \\ 
+        \hline
+        3 & Warsaw & Commuter & 542 \\
+        \hline
+        22 & Ballard & Commuter & 1467 \\
+        \hline
+        \end{tabular}
+        \caption{Parking}
+        
+    \vskip 0.1in
+        
+    \begin{tabular}{|c c c c c|} 
+        \hline
+        term & room & days & beg-time & end-time \\ [0.5ex] 
+        \hline\hline
+        1201 & ISAT/CS 0246 & TT & 09.30 & 10.45 \\ 
+        \hline
+        1208 & Online & MWF & 12.00 & 12.50 \\
+        \hline
+        1218 & En/Geo 2209 & MW & 15.55 & 17.10 \\
+        \hline
+        \end{tabular}
+        \caption{Enrollment History}
+\end{table}
+
+We currently have data from the Spring 2021 semester as well as the majority of the Fall 2021 semester. Due to the recent nature of this data collection, the reliability of the data is high. We also hope to obtain records from before 2021, which could give insight into how trends have changed over time. There may be differences between previous data trends and how the data would present itself in the present day due to new classes of students being on campus.
+
+With the data supplied by Parking Services and the Office of the Registrar, we hope to answer questions relevant to students. One question we plan to answer is how various class times affect availability of parking spaces on campus. By answering this, we can help students figure out when they should arrive in order to find a parking spot before the next set of class' begin. We can accomplish this by analyzing how many cars are exiting the garages in the time increments directly following a class' end time. Another question that we hope to answer is whether specific times throughout the day have a higher probability of open spaces. We can answer this by looking at a particular day of the week and analyzing how many spots were available at times throughout that specific day in the past. This would allow students to have a better idea of what times usually have the best parking availability and relieves the stress of wondering whether or not there will be a parking spot available. One of the most important questions we want to answer is what parking might look like on a future date. This is done by having the user input a date and looking at the historic data on that specific day and time to predict what parking is going to look like. This is important to students because it gives them predictive parking information that is tailored specifically to their needs. We believe that by answering these questions, students will have a better parking experience on campus.
+
+%------------------------------------------------------------------------------%
+\section*{Users and Specs}
+
+%% Describe the main users of your application. Be specific; for example, what is their profession? How much experience do they have with data? Why would they want to use your project?
+
+%% Discuss the high-level specifications. What functionality will your completed application provide? Explain a few use cases: what the user will do, and what the app will do. Leave out the technical details, such as what programming languages and software tools you'll use.
+
+\qquad The main users are the students of JMU, specifically ones that have a parking pass. Since many of these users are technologically inclined, they should have a reasonable level of experience with reading data and navigating drop down menus. These users will use the site to alleviate their stress and frustration with JMU parking and better plan their day. The app will have charts showing deck capacities at certain times and dashboard-like displays of current garage availability, average time each deck reached capacity, and if classes are about to start and end. The user will search drop-down menus for specific garages and time intervals, or look all the garages on campus. The app should also be able to take a date and time inputted by a user and predict future parking availability based on past data. 
+
+
+The first question of class times correlating to parking availability can help a student like Andrea. She has a class that starts at 12:40. Before leaving, she looks at the dashboard and sees that right around 12:25 there are lots of students leaving the garages because class got out. Andrea leaves her apartment at 12:20 to get at Warsaw garage right as others are leaving. The second question of good times throughout the day helps John. He's filling out a class schedule for next semester. In the past, all his classes were in the afternoon and it was impossible to find parking. He looks at the chart of garage availability throughout the day and finds most garages fill up at 10:00am. With that in mind, John plans his classes to begin between 9:00 and 10:00 so he knows he'll secure a spot.
+
+%------------------------------------------------------------------------------%
+\section*{About the Team}
+
+%% Include a short biographical sketch for each team member. Focus on academic and professional experience, not where you were born and what your hobbies are. For example, you might list the most recent/advanced CS courses you have completed, software projects you have worked on the in past, internships or other relevant work experience, and/or unique background abilities and skills that you will bring to the project.
+
+\qquad{Jacquelyn Hendricks is a Junior at James Madison University majoring in Media Arts and Design with a minor in Computer Science. Web and app development is the perfect combination of the design principles she learns in SMAD and the programming skills she learns in CS. She has taken Software Development, Web Development, and Data Structures and Algorithms in the CS department and User Experience Design and Research and Intro to Javascript in SMAD. This summer, Jacquelyn is interning at CASE Consulting, allowing her to test her experience with web languages and databases.}
+
+Catherine Baker is a Junior at James Madison University majoring in Accounting with a minor in Computer Science. During her time at James Madison University she has completed introductory and advanced programming courses as well as a course focused on software engineering. During her time in the College of Business, Catherine has also taken classes relating to business analytics and computer information systems. During her most recent semester, Catherine took part in a semester long project where she had to create a functional business plan integrating all of the disciplines within business. She is excited to bring her business perspective and analytical experience to the team. 
+
+
+Grace Bailey is a current senior at JMU. Her majors are Intelligence Analysis and Independent Scholars with a focus on cyberpsychology, and more specifically, how technology affects our information processing ability. She completed my honors thesis last semester about how internet addiction can affect our logical reasoning and problem solving ability.  Grace's three minors are Computer Science, Honors Interdisciplinary Studies, and Global Religions \& Global Issues. 
+
+Alex Tran is a senior majoring in Computer Science. During his time at JMU, Alex has completed classes on data structures, machine learning, and computer systems. His data structures class resonated the most with him because it teaches how to optimize programs, analyze runtime complexities, and process data in many different ways. Machine Learning was probably the most challenging class he has taken at JMU, but it gave him experience with Python which will be useful in his future career. 
+%------------------------------------------------------------------------------%
+\end{document}
