@@ -4,7 +4,7 @@ Team 4: Parking Helpers
 
 ## DESCRIPTION
 
-TODO
+Our team noticed that students at James Madison University lack access to comprehensive data relating to on campus parking. The only information currently shared online by the university is the capacity of each garage at a given time. Our application aims to provide students with crucial information so that they can better plan around class schedules and peak times.
 
 ## CONTENTS
 
