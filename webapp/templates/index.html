@@ -4,14 +4,16 @@
 <head>
     <title>Team Parking</title>
     <style>
-        h1 {text-align: center;}
+        h1 {
+            text-align: center;
+        }
     </style>
 </head>
 
 
 <body>
     <!-- NAV BAR -->
-    {% with home=True, classtime=False, garages=False, students=False,
+    {% with home=True, garages=False, students=False,
     occupied=False, faculty=False, visitors=False %}
     {% include 'nav.html' %}
     {% endwith %}
@@ -20,28 +22,15 @@
     <br>
 
     <p style="text-align:center">
-        <img src="https://t4.ftcdn.net/jpg/01/70/67/17/360_F_170671797_KY866DPiDN1YP6rvsmxnciTcDXxVHDlR.jpg" alt="Parking Logo" style="width:250px;height:200px;">
+        <img src="https://t4.ftcdn.net/jpg/01/70/67/17/360_F_170671797_KY866DPiDN1YP6rvsmxnciTcDXxVHDlR.jpg"
+            alt="Parking Logo" style="width:250px;height:200px;">
     </p>
 
     <h1>The Parking Helper App</h1>
 
-    <p style="text-align:center">This application is designed to give JMU students more access to parking information 
-       so they can schedule their day better and be more prepared.
+    <p style="text-align:center">This application is designed to give JMU students more access to parking information
+        so they can schedule their day better and be more prepared.
     </p>
-    
-    <!-- <p>Links to Charts</p>
-
-    <a href="/visitors">Visitors per Hour</a>
-    <br></br>
-    <a href="/classtime">Parking Spots Available by Classtime</a>
-    <br></br>
-    <a href="/garages">Garage Statistics</a>
-    <br></br>
-    <a href="/students">Student Parking by Day</a>
-    <br></br>
-    <a href="/occupied">Statistics of Occupied Parking</a>
-    <br></br>
-    <a href="/faculty">Available Parking in Faculty/Staff Lots</a> -->
 
 </body>
 <script>

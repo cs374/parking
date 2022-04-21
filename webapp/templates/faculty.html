@@ -3,7 +3,7 @@
 <!-- Pie Chart to show garage availability in faculty/staff-->
 
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         myvar = {{ data | tojson }}
@@ -12,7 +12,7 @@
 
 <body class="center">
     <!-- NAV BAR -->
-    {% with home=False, classtime=False, garages=False, students=False,
+    {% with home=False, garages=False, students=False,
     occupied=False, faculty=True, visitors=False %}
     {% include 'nav.html' %}
     {% endwith %}
@@ -20,35 +20,36 @@
     <br>
     <h1>Available Parking in Faculty Lots</h1>
 
-    <p style="margin-left: 10%; margin-right: 10%;"> 
-		This query is designed to show how the average number of occupied spaces versus the average number 
-        of available spaces for a particular faculty lot at a specific date and hour. Users will need to 
+    <p style="margin-left: 10%; margin-right: 10%;">
+        This query is designed to show how the average number of occupied spaces versus the average number
+        of available spaces for a particular faculty lot at a specific date and hour. Users will need to
         select which faculty lot they are interested in as well as inputting a date and hour in the input
-        fields below. 
-	</p>
+        fields below.
+    </p>
 
     {% if is_input_wrong %}
     WRONG INPUT FORMAT. PLEASE USE 'HH' FORMAT FOR HOUR.
     {% endif %}
     <form>
         <p>
-            <h5>Enter an hour in HH format:</h5>
-            <input style="width: 50px;" class="text-box" type="text" name="hour" value="{{hour_input}}">
-            <br><br>
-            <h5>Select a Date:</h5>
-            <input class="text-box" type="date" name="date" value="{{ date_input }}" min="2021-01-01" max="2021-11-04" required><br>
+        <h5>Enter an hour in HH format:</h5>
+        <input style="width: 50px;" class="text-box" type="text" name="hour" value="{{hour_input}}">
+        <br><br>
+        <h5>Select a Date:</h5>
+        <input class="text-box" type="date" name="date" value="{{ date_input }}" min="2021-01-01" max="2021-11-04"
+            required><br>
 
-            <br>
-            <h5>Select a Garage:</h5>
-            <input type="radio" id="Grace" name="garage" value="Grace" checked>
-            <label for="Grace">Grace</label><br>
-            <input type="radio" id="Warsaw" name="garage" value="Warsaw">
-            <label for="Warsaw">Warsaw</label><br>
-            <input type="radio" id="Ballard" name="garage" value="Ballard">
-            <label for="Ballard">Ballard</label><br>
-            <input type="radio" id="Mason" name="garage" value="Mason">
-            <label for="Mason">Mason</label><br><br>
-            <input class="submit" type="submit">
+        <br>
+        <h5>Select a Garage:</h5>
+        <input type="radio" id="Grace" name="garage" value="Grace" checked>
+        <label for="Grace">Grace</label><br>
+        <input type="radio" id="Warsaw" name="garage" value="Warsaw">
+        <label for="Warsaw">Warsaw</label><br>
+        <input type="radio" id="Ballard" name="garage" value="Ballard">
+        <label for="Ballard">Ballard</label><br>
+        <input type="radio" id="Mason" name="garage" value="Mason">
+        <label for="Mason">Mason</label><br><br>
+        <input class="submit" type="submit">
         </p>
     </form>
 

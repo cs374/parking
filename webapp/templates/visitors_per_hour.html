@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}"/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}" />
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	{# The next 4 lines basically gets the data from the py file so that our javascript code can use it #}
 	<script type="text/javascript">
@@ -14,7 +14,7 @@
 
 <body class="center">
 	<!-- NAV BAR -->
-	{% with home=False, classtime=False, garages=False, students=False,
+	{% with home=False, garages=False, students=False,
 	occupied=False, faculty=False, visitors=True %}
 	{% include 'nav.html' %}
 	{% endwith %}
@@ -22,30 +22,31 @@
 	<br>
 	<h1>Visitors in a Garage</h1>
 
-	<p style="margin-left: 10%; margin-right: 10%;"> 
-		This query is designed to show how the number of visitors and activity for a specific garage 
-		on a specific date. Users will need to select which garage they are interested in and the date 
-		they would like to view from the input boxes below. 
+	<p style="margin-left: 10%; margin-right: 10%;">
+		This query is designed to show how the number of visitors and activity for a specific garage
+		on a specific date. Users will need to select which garage they are interested in and the date
+		they would like to view from the input boxes below.
 	</p>
 
 	<form>
 		<p>
-			<h5>Select a Garage:</h5>
-			<input type="radio" id="Grace" name="garage" value="Grace" required>
-			<label for="Grace">Grace</label><br>
-			<input type="radio" id="Warsaw" name="garage" value="Warsaw">
-			<label for="Warsaw">Warsaw</label><br>
-			<input type="radio" id="Ballard" name="garage" value="Ballard">
-			<label for="Ballard">Ballard</label><br>
-			<input type="radio" id="Champions" name="garage" value="Champions">
-			<label for="Champions">Champions</label><br>
-			<input type="radio" id="Chesapeake" name="garage" value="Chesapeake">
-			<label for="Chesapeake">Chesapeake</label><br>
-			<input type="radio" id="Mason" name="garage" value="Mason">
-			<label for="Mason">Mason</label><br><br>
-			<h5>Select a Date:</h5>
-			<input class="text-box" type="date" name="date" value="{{ date_input }}" min="2021-01-01" max="2021-11-04" required><br><br>
-			<input class="submit" type="submit">
+		<h5>Select a Garage:</h5>
+		<input type="radio" id="Grace" name="garage" value="Grace" required>
+		<label for="Grace">Grace</label><br>
+		<input type="radio" id="Warsaw" name="garage" value="Warsaw">
+		<label for="Warsaw">Warsaw</label><br>
+		<input type="radio" id="Ballard" name="garage" value="Ballard">
+		<label for="Ballard">Ballard</label><br>
+		<input type="radio" id="Champions" name="garage" value="Champions">
+		<label for="Champions">Champions</label><br>
+		<input type="radio" id="Chesapeake" name="garage" value="Chesapeake">
+		<label for="Chesapeake">Chesapeake</label><br>
+		<input type="radio" id="Mason" name="garage" value="Mason">
+		<label for="Mason">Mason</label><br><br>
+		<h5>Select a Date:</h5>
+		<input class="text-box" type="date" name="date" value="{{ date_input }}" min="2021-01-01" max="2021-11-04"
+			required><br><br>
+		<input class="submit" type="submit">
 		</p>
 	</form>
 

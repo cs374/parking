@@ -1,13 +1,13 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body class="center">
     <!-- NAV BAR -->
-    {% with home=False, classtime=False, garages=False, students=True,
+    {% with home=False, garages=False, students=True,
     occupied=False, faculty=False, visitors=False %}
     {% include 'nav.html' %}
     {% endwith %}
@@ -16,12 +16,12 @@
     <h1>Finding Student Enrollment</h1>
     <h5 id="sub">Results only show class times with more than 50 people and more than 5 courses.</h5>
 
-    <p style="margin-left: 10%; margin-right: 10%;"> 
-		This query is designed to show how the number of students that are enrolled in classes 
-        in relation to the number of classes that are offered during the most popular times. 
-        Users will need to select which semester as well as checking the days that they are interested 
-        in from the input fields below. 
-	</p>
+    <p style="margin-left: 10%; margin-right: 10%;">
+        This query is designed to show how the number of students that are enrolled in classes
+        in relation to the number of classes that are offered during the most popular times.
+        Users will need to select which semester as well as checking the days that they are interested
+        in from the input fields below.
+    </p>
 
     <form>
         <h5>Select a Term:</h5>
