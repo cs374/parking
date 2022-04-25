@@ -9,7 +9,6 @@ import garage_day_stats
 import how_many_stucour
 import percentage_occupied
 import faculty
-import home_chart
 
 app = Flask(__name__)
 #nav = Navigation(app)
@@ -31,7 +30,6 @@ def return_database():
 
 @app.route("/")
 def index():
-    home_chart.select_hour_date()
     return render_template("index.html")
 
 @app.route("/visitors")
