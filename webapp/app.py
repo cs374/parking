@@ -1,29 +1,13 @@
-from typing import ItemsView
 from flask import Flask, render_template
-#from flask_navigation import Navigation
-
+from visitors_per_hour import select_garage
+from garage_day_stats import garage_day_stats
+from how_many_stucour import student_courses
+from percentage_occupied import select_hour_date
+from faculty import availableSpots
 import psycopg
-import visitors_per_hour
-import class_time_garage_avail
-import garage_day_stats
-import how_many_stucour
-import percentage_occupied
-import faculty
 
 app = Flask(__name__)
-#nav = Navigation(app)
 app.secret_key = "key"
-
-# # Create Nav Bar
-# nav.Bar('top', [
-#     nav.Item('Home', 'index'),
-#     nav.Item('Visitors', 'visitors'),
-#     nav.Item('Classes and Parking', 'classtime'),
-#     nav.Item('Garage per Day', 'garages'),
-#     nav.Item('Classes and Parking', 'students'),
-#     nav.Item('Percent Occupied', 'occupied'),
-#     nav.Item('Faculty Spots', 'facultySpots')
-#     ])
 
 def return_database():
     return psycopg.connect("host=localhost dbname=parking user=parking password=JUvWSJ2hgRp93TmU")
@@ -34,24 +18,20 @@ def index():
 
 @app.route("/visitors")
 def visitors():
-    return visitors_per_hour.select_garage()
-
-@app.route("/classtime")
-def classtime():
-    return class_time_garage_avail.select_class_time()
+    return select_garage()
 
 @app.route("/garages")
 def garages():
-    return garage_day_stats.garage_day_stats()
+    return garage_day_stats()
 
 @app.route("/students")
 def students():
-    return how_many_stucour.index()
+    return student_courses()
 
 @app.route("/occupied")
 def occupied():
-    return percentage_occupied.select_hour_date()
+    return select_hour_date()
 
 @app.route("/faculty")
 def facultySpots():
-    return faculty.availableSpots()
+    return availableSpots()

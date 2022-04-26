@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, flash
 import psycopg, app
 
-def index():
+def student_courses():
     term = request.args.get("term", "")
     monday = request.args.get("M", "")
     tuesday = request.args.get("TU", "")
