@@ -98,6 +98,7 @@
             legend: { position: 'top', maxLines: 3 },
             bar: { groupWidth: '75%' },
             isStacked: true,
+            series: {0: {color: '#4B7C8A'}, 1: {color: '#8FAD88'}},
          };
          var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
          chart.draw(view, options);
