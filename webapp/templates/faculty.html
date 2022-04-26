@@ -89,13 +89,14 @@
             var data = google.visualization.arrayToDataTable([
                 ['Type', 'Number of Spaces'],
                 ['Average Occupied Spaces', {{ data[0][1] }}],
-        ['Average Available Spaces', {{ data[0][2] }}]
+                ['Average Available Spaces', {{ data[0][2] }}]
                 ]);
 
         var options = {
             title: 'Garage availability in faculty/staff spaces',
             curveType: 'function',
-            legend: { position: 'bottom' }
+            legend: { position: 'bottom' },
+            slices: {0: {color: '#4B7C8A'}, 1: {color: '#8FAD88'}},
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
