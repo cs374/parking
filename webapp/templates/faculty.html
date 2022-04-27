@@ -8,6 +8,8 @@
     <script type="text/javascript">
         myvar = {{ data | tojson }}
     </script>
+    <link rel="stylesheet" href="static/style.css"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="static/icon.png"/>
 </head>
 
 <body class="center">
@@ -20,7 +22,7 @@
     <br>
     <h1>Available Parking in Faculty Lots</h1>
 
-    <p style="margin-left: 10%; margin-right: 10%;">
+    <p style="margin-left: 10%; margin-right: 10%; font-size: 20px;">
         This query is designed to show how the average number of occupied spaces versus the average number
         of available spaces for a particular faculty lot at a specific date and hour. Users will need to
         select which faculty lot they are interested in as well as inputting a date and hour in the input
@@ -96,7 +98,7 @@
             title: 'Garage availability in faculty/staff spaces',
             curveType: 'function',
             legend: { position: 'bottom' },
-            slices: {0: {color: '#4B7C8A'}, 1: {color: '#8FAD88'}},
+            slices: {0: {color: '#4B7C8A'}, 1: {color: '#CBDF90'}},
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
