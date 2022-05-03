@@ -79,7 +79,7 @@ def get_dayofweek(date):
     result=current.fetchone()
     i = int(result[0])
 
-    days = ['M', 'Tu', 'W', 'Th', 'F', 'Sa', 'Su']
+    days = ['M', 'TU', 'W', 'TH', 'F', 'Sa', 'Su']
 
     return days[i-1] 
 
@@ -93,8 +93,12 @@ def get_term(date):
         month = month[1]
 
     # Determine starting month of the semester
-    if int(month) < 8 and int(month) > 0:
+    if int(month) >= 1 and int(month) <= 5:
         term += '1'
+    elif int(month) >= 8 and int(month) <= 11: 
+        term += '8'
+    else:
+        term += '6'
 
     return int(term)
 
@@ -124,9 +128,10 @@ def get_student_courses(term, dow):
 
 def processStrings(term):
     strTerm = ''
-    #strDay = ''
-    if term == '1211':
+    if term == 1211:
         strTerm = 'Spring 2021'
+    elif term == 1216:
+        strTerm = 'Summer 2021'
     else:
         strTerm = 'Fall 2021'
 
