@@ -130,7 +130,7 @@ def processStrings(term):
     strTerm = ''
     if term == 1211:
         strTerm = 'Spring 2021'
-    elif term == 1216:
+    elif term == 1215:
         strTerm = 'Summer 2021'
     else:
         strTerm = 'Fall 2021'

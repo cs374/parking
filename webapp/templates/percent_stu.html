@@ -19,16 +19,17 @@
     {% endwith %}
 
     <br>
-    <h1 class="center">Percentage of Occupied Spaces</h1>
+    <h1 class="center">Occupied Spaces Compared to Student Volume</h1>
 
     {% if is_input_wrong %}
     <p class="error"> WRONG INPUT FORMAT. PLEASE USE 'HH' FORMAT FOR HOUR 'YYYY-MM-DD' FOR DATE.</p>
     {% endif %}
 
     <p style="margin-left: 10%; margin-right: 10%; font-size: 20px;">
-        This query is designed to show the average proportion of occupied and available spaces in relation
-        to total spaces available for each garage at a given hour. Users will need to input an hour in HH format
-        and a date in the input fields below.
+        This query allows easy comparisons between the garage occupancy and amount of students and courses on campus. By
+        entering a day and hour, both charts will appear. From there, edit the hour to change the chart on the left to
+        show garage occupancy at that hour. Compare the two graphs at various times throughout the day to see how the
+        volume of students and courses is reflected in the availability of parking spaces!
     </p>
 
     <form class="center">
@@ -42,10 +43,10 @@
 
     {% if data and percent_data %}
     <div class="container-fluid combo">
-        <div class="row">
+        <div class="row" style="height: 400px;">
             <!-- THE PERCENT OCCUPIED CHART -->
-            <div class="col-md-6">
-                <div id="columnchart_values" style="height: 400px;"></div>
+            <div class="col-xl-6">
+                <div id="columnchart_values" style="height: 100%;"></div>
                 <script type="text/javascript">
                     google.charts.load("current", { packages: ['corechart'] });
                     google.charts.setOnLoadCallback(drawChart);
@@ -69,9 +70,17 @@
 
                     var options = {
                         title: "Garage occupancy for {{date_input}} at {{hour_input}}:00.",
+                        titleTextStyle: {
+                            fontName: 'Tahoma',
+                            fontSize: 16,
+                        },
                         legend: { position: 'top', maxLines: 3 },
                         bar: { groupWidth: '75%' },
                         isStacked: true,
+                        vAxes: {
+                            // Adds titles to each axis.
+                            0: { title: 'Number of Spaces' },
+                        },
                         series: { 0: { color: '#4B7C8A' }, 1: { color: '#CBDF90' } },
                     };
                     var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
@@ -81,20 +90,18 @@
             </div>
 
             <!-- THE STU COUR CHART-->
-            <div class="col-md-6">
+            <div class="col-xl-6">
                 {% if stu_error %}
                 <p class="error">{{stu_error}}</p>
                 {% endif %}
 
                 {% if stu_data %}
-                <div id="chart_div" style="height: 400px;"></div>
+                <div id="chart_div" style="height: 100%;"></div>
                 <script>
                     google.charts.load('current', { 'packages': ['corechart', 'bar'] });
                     google.charts.setOnLoadCallback(drawStuff);
 
                     function drawStuff() {
-
-                        var button = document.getElementById('change-chart');
                         var chartDiv = document.getElementById('chart_div');
 
                         var data = google.visualization.arrayToDataTable([
@@ -104,27 +111,15 @@
                         {% endfor %}
             ]);
 
-                    var materialOptions = {
-                        chart: {
-                            title: 'Student numbers and Course Offerings on {{ day }} in {{ strTerm }}',
-                            subtitle: 'Note: a student in one time could be a student in another time.',
-                        },
+                    var options = {
                         series: {
-                            0: { axis: 'students', color: '#4D7C8A' }, // Bind series 0 to an axis named 'distance'.
-                            1: { axis: 'courses', color: '#CBDF90' } // Bind series 1 to an axis named 'brightness'.
+                            0: { targetAxisIndex: 0, color: '#4D7C8A' },
+                            1: { targetAxisIndex: 1, color: '#CBDF90' }
                         },
-                        axes: {
-                            y: {
-                                students: { label: 'Students' }, // Left y-axis.
-                                courses: { side: 'right', label: 'Courses' } // Right y-axis.
-                            }
-                        }
-                    };
-
-                    var classicOptions = {
-                        series: {
-                            0: { targetAxisIndex: 0 },
-                            1: { targetAxisIndex: 1 }
+                        title: 'Student Numbers and Course Offerings on {{ day }} in {{ strTerm }}.',
+                        titleTextStyle: {
+                            fontName: 'Tahoma',
+                            fontSize: 16,
                         },
                         vAxes: {
                             // Adds titles to each axis.
@@ -133,21 +128,12 @@
                         }
                     };
 
-                    function drawMaterialChart() {
-                        var materialChart = new google.charts.Bar(chartDiv);
-                        materialChart.draw(data, google.charts.Bar.convertOptions(materialOptions));
-                        button.innerText = 'Change to Classic';
-                        button.onclick = drawClassicChart;
-                    }
-
                     function drawClassicChart() {
                         var classicChart = new google.visualization.ColumnChart(chartDiv);
-                        classicChart.draw(data, classicOptions);
-                        button.innerText = 'Change to Material';
-                        button.onclick = drawMaterialChart;
+                        classicChart.draw(data, options);
                     }
 
-                    drawMaterialChart();
+                    drawClassicChart();
         };
                 </script>
                 {% endif %}

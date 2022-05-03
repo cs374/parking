@@ -3,7 +3,6 @@
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <link rel="stylesheet" href="static/style.css" />
     <link rel="icon" type="image/png" sizes="32x32" href="static/icon.png" />
 </head>
 
@@ -59,7 +58,9 @@
 
     <!-- Saves which button was selected after submitting -->
     <script>
+        {% if term %}
         document.getElementById("{{term}}").checked = true;
+        {% endif %}
         {% if days %}
         document.getElementById("M").checked = {{ "true" if days[0] == "on" else "false" }};
         document.getElementById("TU").checked = {{ "true" if days[1] == "on" else "false" }};
@@ -77,7 +78,6 @@
 
         function drawStuff() {
 
-            var button = document.getElementById('change-chart');
             var chartDiv = document.getElementById('chart_div');
 
             var data = google.visualization.arrayToDataTable([
@@ -105,31 +105,9 @@
             }
         };
 
-        var classicOptions = {
-            width: 900,
-            series: {
-                0: { targetAxisIndex: 0 },
-                1: { targetAxisIndex: 1 }
-            },
-            vAxes: {
-                // Adds titles to each axis.
-                0: { title: 'Students' },
-                1: { title: 'Courses' }
-            }
-        };
-
         function drawMaterialChart() {
             var materialChart = new google.charts.Bar(chartDiv);
             materialChart.draw(data, google.charts.Bar.convertOptions(materialOptions));
-            button.innerText = 'Change to Classic';
-            button.onclick = drawClassicChart;
-        }
-
-        function drawClassicChart() {
-            var classicChart = new google.visualization.ColumnChart(chartDiv);
-            classicChart.draw(data, classicOptions);
-            button.innerText = 'Change to Material';
-            button.onclick = drawMaterialChart;
         }
 
         drawMaterialChart();
