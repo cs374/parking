@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from percent_stu import percent_stu_combo
 from visitors_per_hour import select_garage
 from garage_day_stats import garage_day_stats
 from how_many_stucour import student_courses
@@ -18,7 +19,7 @@ def index():
 
 @app.route("/percent_stu")
 def percent_stu():
-    return render_template("percent_stu_combo.html")
+    return percent_stu_combo()
 
 @app.route("/visitors")
 def visitors():
