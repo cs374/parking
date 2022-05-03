@@ -1,9 +1,9 @@
 .center {
-    text-align: center;
+	text-align: center;
 }
 
 .submit {
-    background-color: #1B4079;
+	background-color: #1B4079;
 	padding: 10px 10px;
 	color: white;
 	border-radius: 15px;
@@ -15,10 +15,14 @@
 }
 
 h1 {
-    font-size: 300%;
+	font-size: 300%;
 }
 
-#table_div, #columnchart_values, #curve_chart, #pie_chart, #chart_div {
+#table_div,
+#columnchart_values,
+#curve_chart,
+#pie_chart,
+#chart_div {
 	display: block;
 	margin: 0 auto;
 }
@@ -29,4 +33,13 @@ h1 {
 	text-align: center;
 	border-radius: 15px;
 
+}
+
+.form-heading {
+	margin-top: 15px;
+}
+
+.error {
+	text-align: center;
+	color: red;
 }

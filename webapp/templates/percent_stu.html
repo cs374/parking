@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="static/icon.png" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}" />
     <title>Occupancy and Students</title>
 </head>
 
@@ -15,6 +17,72 @@
     occupied=False, faculty=False, visitors=False %}
     {% include 'nav.html' %}
     {% endwith %}
+
+    <br>
+    <h1 class="center">Percentage of Occupied Spaces</h1>
+
+    {% if is_input_wrong %}
+    <p class="error"> WRONG INPUT FORMAT. PLEASE USE 'HH' FORMAT FOR HOUR 'YYYY-MM-DD' FOR DATE.</p>
+    {% endif %}
+
+    <p style="margin-left: 10%; margin-right: 10%; font-size: 20px;">
+        This query is designed to show the average proportion of occupied and available spaces in relation
+        to total spaces available for each garage at a given hour. Users will need to input an hour in HH format
+        and a date in the input fields below.
+    </p>
+
+    <form class="center">
+        <h5 class="form-heading"> Enter an hour in HH format: </h5>
+        <input style="width: 50px;" class="text-box" type="text" name="hour" value="{{hour_input}}" required>
+        <h5 class="form-heading"> Select a Date: </h5>
+        <input class="text-box" type="date" name="date" value="{{date_input}}" min="2021-01-01" max="2021-11-04"
+            required>
+        <input class="submit" type="submit">
+    </form>
+
+    {% if data and percent_data %}
+    <div class="container">
+        <div class="row">
+            <!-- THE PERCENT OCCUPIED CHART -->
+            <div class="col-md-6">
+                <div class="center" id="columnchart_values"></div>
+                <script type="text/javascript">
+                    google.charts.load("current", { packages: ['corechart'] });
+                    google.charts.setOnLoadCallback(drawChart);
+                    function drawChart() {
+                        var data = google.visualization.arrayToDataTable([
+                            ['Garage Availability', 'Occupied Spaces', 'Available Spaces'],
+                            {% for i in range(data | length) %}
+                    ["{{ percent_data[i][0] }}", {{ percent_data[i][1] }}, {{ data[i][1] - percent_data[i][1] }}],
+                        {% endfor %}
+                    ]);
+
+                    var view = new google.visualization.DataView(data);
+                    view.setColumns([0, 1,
+                        {
+                            calc: "stringify",
+                            sourceColumn: 1,
+                            type: "string",
+                            role: "annotation"
+                        },
+                        2]);
+
+                    var options = {
+                        width: 800,
+                        height: 400,
+                        legend: { position: 'top', maxLines: 3 },
+                        bar: { groupWidth: '75%' },
+                        isStacked: true,
+                        series: { 0: { color: '#4B7C8A' }, 1: { color: '#CBDF90' } },
+                    };
+                    var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+                    chart.draw(view, options);
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+    {%endif%}
 </body>
 
 </html>
