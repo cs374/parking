@@ -8,13 +8,13 @@
     <script type="text/javascript">
         myvar = {{ data | tojson }}
     </script>
-    <link rel="stylesheet" href="static/style.css"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="static/icon.png"/>
+    <link rel="stylesheet" href="static/style.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="static/icon.png" />
 </head>
 
 <body class="center">
     <!-- NAV BAR -->
-    {% with home=False, garages=False, students=False,
+    {% with home=False, percent_stu=False, garages=False, students=False,
     occupied=False, faculty=True, visitors=False %}
     {% include 'nav.html' %}
     {% endwith %}
@@ -56,8 +56,8 @@
     </form>
 
     <script>
-		document.getElementById("{{ garage_input }}").checked = true;
-	</script>
+        document.getElementById("{{ garage_input }}").checked = true;
+    </script>
 
     {% if data %}
     <div id="table_div" style="width: 500px;"></div>
@@ -91,14 +91,14 @@
             var data = google.visualization.arrayToDataTable([
                 ['Type', 'Number of Spaces'],
                 ['Average Occupied Spaces', {{ data[0][1] }}],
-                ['Average Available Spaces', {{ data[0][2] }}]
+        ['Average Available Spaces', {{ data[0][2] }}]
                 ]);
 
         var options = {
             title: 'Garage availability in faculty/staff spaces',
             curveType: 'function',
             legend: { position: 'bottom' },
-            slices: {0: {color: '#4B7C8A'}, 1: {color: '#CBDF90'}},
+            slices: { 0: { color: '#4B7C8A' }, 1: { color: '#CBDF90' } },
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));

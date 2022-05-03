@@ -15,7 +15,7 @@
 
 <body>
     <!-- NAV BAR -->
-    {% with home=True, garages=False, students=False,
+    {% with home=True, percent_stu=False, garages=False, students=False,
     occupied=False, faculty=False, visitors=False %}
     {% include 'nav.html' %}
     {% endwith %}
@@ -38,6 +38,8 @@
     </p>
 
 </body>
+
+<!-- CLOCK -->
 <script>
     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];

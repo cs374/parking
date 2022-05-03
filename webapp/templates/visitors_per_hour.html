@@ -10,13 +10,13 @@
 	</script>
 
 	<title>Parking!</title>
-	<link rel="stylesheet" href="static/style.css"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="static/icon.png"/>
+	<link rel="stylesheet" href="static/style.css" />
+	<link rel="icon" type="image/png" sizes="32x32" href="static/icon.png" />
 </head>
 
 <body class="center">
 	<!-- NAV BAR -->
-	{% with home=False, garages=False, students=False,
+	{% with home=False, percent_stu=False, garages=False, students=False,
 	occupied=False, faculty=False, visitors=True %}
 	{% include 'nav.html' %}
 	{% endwith %}

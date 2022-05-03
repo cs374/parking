@@ -3,13 +3,13 @@
 <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}" />
-    <link rel="stylesheet" href="static/style.css"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="static/icon.png"/>
+    <link rel="stylesheet" href="static/style.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="static/icon.png" />
 </head>
 
 <body>
     <!-- NAV BAR -->
-    {% with home=False, garages=True, students=False,
+    {% with home=False, percent_stu=False, garages=True, students=False,
     occupied=False, faculty=False, visitors=False %}
     {% include 'nav.html' %}
     {% endwith %}

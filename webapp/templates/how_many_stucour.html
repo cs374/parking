@@ -3,13 +3,13 @@
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <link rel="stylesheet" href="static/style.css"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="static/icon.png"/>
+    <link rel="stylesheet" href="static/style.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="static/icon.png" />
 </head>
 
 <body class="center">
     <!-- NAV BAR -->
-    {% with home=False, garages=False, students=True,
+    {% with home=False, percent_stu=False, garages=False, students=True,
     occupied=False, faculty=False, visitors=False %}
     {% include 'nav.html' %}
     {% endwith %}
@@ -83,8 +83,8 @@
             var data = google.visualization.arrayToDataTable([
                 ["Time", "num_students", "num_courses"],
                 {% for row in cur %}
-                ["{{ row[0] }}", {{ row[1] }}, {{ row[2] }}],
-                {% endfor %}
+        ["{{ row[0] }}", {{ row[1] }}, {{ row[2] }}],
+            {% endfor %}
             ]);
 
         var materialOptions = {
@@ -94,8 +94,8 @@
                 subtitle: 'Note: a student in one time could be a student in another time.'
             },
             series: {
-                0: { axis: 'students', color: '#4D7C8A'}, // Bind series 0 to an axis named 'distance'.
-                1: { axis: 'courses',  color: '#CBDF90'} // Bind series 1 to an axis named 'brightness'.
+                0: { axis: 'students', color: '#4D7C8A' }, // Bind series 0 to an axis named 'distance'.
+                1: { axis: 'courses', color: '#CBDF90' } // Bind series 1 to an axis named 'brightness'.
             },
             axes: {
                 y: {

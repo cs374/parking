@@ -16,6 +16,10 @@ def return_database():
 def index():
     return render_template("index.html")
 
+@app.route("/percent_stu")
+def percent_stu():
+    return render_template("percent_stu_combo.html")
+
 @app.route("/visitors")
 def visitors():
     return select_garage()
