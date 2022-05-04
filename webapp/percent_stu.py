@@ -88,17 +88,21 @@ def get_term(date):
     # Turns the date into the term
     term = f'1{date[2:4]}'
     month = date[5:7]
+    day = date[-2:]
 
     if month[0] == '0':
         month = month[1]
 
     # Determine starting month of the semester
-    if int(month) >= 1 and int(month) <= 5:
+    # Note: this is hard coded for Summer 2021 being May 17
+    if int(month) >= 1 and int(month) < 5:
         term += '1'
     elif int(month) >= 8 and int(month) <= 11: 
         term += '8'
+    elif int(month) == 5 and int(day) < 17:
+        term += '1'
     else:
-        term += '6'
+        term += '5'
 
     return int(term)
 
