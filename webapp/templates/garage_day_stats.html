@@ -3,7 +3,6 @@
 <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='query_pages.css')}}" />
-    <link rel="stylesheet" href="static/style.css" />
     <link rel="icon" type="image/png" sizes="32x32" href="static/icon.png" />
 </head>
 
@@ -66,9 +65,12 @@
         var options = {
             title: '{{ strGarage }} Occupancy for {{ date }}',
             curveType: 'function',
-            legend: { position: 'bottom' },
+            legend: { position: 'top' },
             vAxis: {
                 title: "Parking Spaces"
+            },
+            hAxis: {
+                title: "Time of Day"
             }
         };
 
