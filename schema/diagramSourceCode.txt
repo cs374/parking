@@ -16,13 +16,6 @@ Table occupancy as O {
 	visitor integer
  }
 
-Table classes as C {
-	day text [pk]
-	start_time text [pk]
-	end_time text [pk]
-	zone_id integer [pk]
-	term text
- }
 
 Table enrollment as E {
   term integer 
@@ -37,11 +30,5 @@ Table enrollment as E {
   enrolled integer
 }
 
-Ref: G.zone_id < C.zone_id
 
 Ref: G.zone_id < O.zone_id
-
-Ref: E.beg_time < C.start_time
-
-Ref: E.end_time < C.end_time
-
