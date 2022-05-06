@@ -56,24 +56,6 @@
 		document.getElementById("{{ garage_input }}").checked = true;
 	</script>
 
-	<div id="table_div" style="width: 500px;"></div>
-
-	<script type="text/javascript">
-		google.charts.load('current', { 'packages': ['table'] });
-		google.charts.setOnLoadCallback(drawTable);
-
-		function drawTable() {
-			var jsdata = new google.visualization.DataTable();
-			jsdata.addColumn('string', 'Hour');
-			jsdata.addColumn('number', 'Visitors');
-
-			jsdata.addRows(myvar);
-
-			var table = new google.visualization.Table(document.getElementById('table_div'));
-			table.draw(jsdata, { showRowNumber: false, width: '100%', height: '100%' });
-		}
-
-	</script>
 
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
@@ -88,10 +70,15 @@
 				title: 'Visitors Per Hour - {{garage_input}} on {{date_input}}',
 				curveType: 'function',
 				legend: { position: 'bottom' },
+				vAxis: {
+                title: "Viitors"
+            	},
+            	hAxis: {
+                title: "Hour"
+            	}
 			};
 
 			var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
 			chart.draw(data, options);
 
 		};
@@ -100,11 +87,8 @@
 	</script>
 
 	<body>
-		<div id="curve_chart" style="width: 1150px; height: 750px;"></div>
+		<div id="curve_chart" style="width: 1150px; height: 700px;"></div>
 	</body>
 
-</html>
-
 </body>
-
 </html>

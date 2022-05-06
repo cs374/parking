@@ -29,15 +29,16 @@
 
    <br>
    <h1 class="center">Percentage of Occupied Spaces</h1>
-   {% if is_input_wrong %}
-   WRONG INPUT FORMAT. PLEASE USE 'HH' FORMAT FOR HOUR 'YYYY-MM-DD' FOR DATE.
-   {% endif %}
-
+   
    <p style="margin-left: 10%; margin-right: 10%; font-size: 20px;">
       This query is designed to show the average proportion of occupied and available spaces in relation
       to total spaces available for each garage at a given hour. Users will need to input an hour in HH format
       and a date in the input fields below.
    </p>
+
+   {% if is_input_wrong %}
+   <p class="error">WRONG INPUT FORMAT. PLEASE USE 'HH' FORMAT IN MILITARY TIME FOR HOUR.</p>
+   {% endif %}
 
    <form class="center">
       <p>
@@ -95,12 +96,19 @@
             2]);
 
          var options = {
+            title: 'Available and Occupied Spaces on {{ date_input }} at {{ hour_input }}:00',
             width: 800,
             height: 400,
             legend: { position: 'top', maxLines: 3 },
             bar: { groupWidth: '75%' },
             isStacked: true,
             series: { 0: { color: '#4B7C8A' }, 1: { color: '#CBDF90' } },
+            vAxis: {
+                title: "Parking Spaces"
+            },
+            hAxis: {
+                title: "Garage"
+            }
          };
          var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
          chart.draw(view, options);

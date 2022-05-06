@@ -80,9 +80,7 @@ def get_dayofweek(date):
     i = int(result[0])
 
     days = ['M', 'TU', 'W', 'TH', 'F', 'Sa', 'Su']
-
     return days[i-1] 
-
 
 def get_term(date):
     # Turns the date into the term
@@ -94,7 +92,6 @@ def get_term(date):
         month = month[1]
 
     # Determine starting month of the semester
-    # Note: this is hard coded for Summer 2021 being May 17
     if int(month) >= 1 and int(month) < 5:
         term += '1'
     elif int(month) >= 8 and int(month) <= 11: 
@@ -103,7 +100,6 @@ def get_term(date):
         term += '1'
     else:
         term += '5'
-
     return int(term)
 
 def get_student_courses(term, dow):

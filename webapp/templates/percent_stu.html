@@ -21,17 +21,17 @@
     <br>
     <h1 class="center">Occupied Spaces Compared to Student Volume</h1>
 
-    {% if is_input_wrong %}
-    <p class="error"> WRONG INPUT FORMAT. PLEASE USE 'HH' FORMAT FOR HOUR 'YYYY-MM-DD' FOR DATE.</p>
-    <p class="error">ENSURE HOUR IS BETWEEN 00 AND 23.</p>
-    {% endif %}
-
-    <p style="margin-left: 10%; margin-right: 10%; font-size: 20px;">
-        This query allows easy comparisons between the garage occupancy and amount of students and courses on campus. By
+    <p class="center" style="margin-left: 10%; margin-right: 10%; font-size: 20px;">
+        This query allows easy comparisons between the garage occupancy/availability and amount of students and courses on campus. By
         entering a day and hour, both charts will appear. From there, edit the hour to change the chart on the left to
-        show garage occupancy at that hour. Compare the two graphs at various times throughout the day to see how the
+        show garage occupancy/availability at that hour. Compare the two graphs at various times throughout the day to see how the
         volume of students and courses is reflected in the availability of parking spaces!
     </p>
+
+    {% if is_input_wrong %}
+    <p class="error"> WRONG INPUT FORMAT. PLEASE USE 'HH' FORMAT FOR HOUR.</p>
+    <p class="error">ENSURE HOUR IS BETWEEN 00 AND 23.</p>
+    {% endif %}
 
     <form class="center">
         <h5 class="form-heading"> Enter an hour in HH format: </h5>
@@ -55,7 +55,7 @@
                         var data = google.visualization.arrayToDataTable([
                             ['Garage Availability', 'Occupied Spaces', 'Available Spaces'],
                             {% for i in range(data | length) %}
-                    ["{{ percent_data[i][0] }}", {{ percent_data[i][1] }}, {{ data[i][1] - percent_data[i][1] }}],
+                            ["{{ percent_data[i][0] }}", {{ percent_data[i][1] }}, {{ data[i][1] - percent_data[i][1] }}],
                         {% endfor %}
                     ]);
 
@@ -111,7 +111,7 @@
                         var data = google.visualization.arrayToDataTable([
                             ["Time", "num_students", "num_courses"],
                             {% for row in stu_data %}
-                    ["{{ row[0] }}", {{ row[1] }}, {{ row[2] }}],
+                            ["{{ row[0] }}", {{ row[1] }}, {{ row[2] }}],
                         {% endfor %}
             ]);
 

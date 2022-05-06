@@ -20,7 +20,7 @@
     {% endwith %}
 
     <br>
-    <h1>Available Parking in Faculty Lots</h1>
+    <h1>Parking in Faculty Lots</h1>
 
     <p style="margin-left: 10%; margin-right: 10%; font-size: 20px;">
         This query is designed to show how the average number of occupied spaces versus the average number
@@ -30,7 +30,7 @@
     </p>
 
     {% if is_input_wrong %}
-    WRONG INPUT FORMAT. PLEASE USE 'HH' FORMAT FOR HOUR.
+    <p class="error">WRONG INPUT FORMAT. PLEASE USE 'HH' FORMAT IN MILITARY TIME FOR HOUR.</p>
     {% endif %}
     <form>
         <p>
@@ -60,26 +60,6 @@
     </script>
 
     {% if data %}
-    <div id="table_div" style="width: 500px;"></div>
-
-    <script type="text/javascript">
-        google.charts.load('current', { 'packages': ['table'] });
-        google.charts.setOnLoadCallback(drawTable);
-
-        function drawTable() {
-            var jsdata = new google.visualization.DataTable();
-            jsdata.addColumn('string', 'Parking Deck');
-            jsdata.addColumn('number', 'Average Occupied Spaces');
-            jsdata.addColumn('number', 'Average Available Spaces');
-
-            jsdata.addRows(myvar);
-
-            var table = new google.visualization.Table(document.getElementById('table_div'));
-            table.draw(jsdata, { showRowNumber: true, width: '100%', height: '100%' });
-        }
-
-    </script>
-
     <div id="pie_chart" style="width: 900px; height: 500px"></div>
 
     <script>
@@ -95,7 +75,7 @@
                 ]);
 
         var options = {
-            title: 'Garage availability in faculty/staff spaces',
+            title: 'Faculty/Staff Parking in {{ garage_input }} on {{ date_input }} at {{ hour_input }}',
             curveType: 'function',
             legend: { position: 'bottom' },
             slices: { 0: { color: '#4B7C8A' }, 1: { color: '#CBDF90' } },
@@ -107,6 +87,7 @@
             }
     </script>
     {% endif %}
+
 </body>
 
 </html>
