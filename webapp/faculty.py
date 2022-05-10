@@ -1,3 +1,7 @@
+"""
+Displays number of occupied and open spaces in faculty lots throughout the day.
+"""
+
 from flask import Flask, render_template, request, flash, redirect
 import psycopg, re, app
 
@@ -27,5 +31,3 @@ def availableSpots():
         date_input="2021-02-17"
     return render_template("faculty.html", hour_input=hour_input, date_input=date_input, garage_input=garage_input,
                             data=data, is_input_wrong=is_input_wrong)
-
-    
